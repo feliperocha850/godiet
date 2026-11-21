@@ -9,6 +9,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.5.17",
     "@types/node": "^26.6.6",
     "jsdom": "^31.0.1",
     "typescript": "^7.0.2",
