@@ -1,0 +1,625 @@
+{
+  "kcal": 1600,
+  "refeicoes": [
+    {
+      "id": "cafe-da-manha",
+      "nome": "Café da manhã",
+      "horario": "07:00",
+      "padrao": [
+        {
+          "nome": "Pão integral",
+          "porcao": "2 fatias (50g)",
+          "grupo": "carboidrato",
+          "substituicoes": [
+            {
+              "nome": "Farelo de aveia",
+              "porcao": "3 colheres de sopa (30g)"
+            },
+            {
+              "nome": "Goma de tapioca",
+              "porcao": "2 colheres de sopa (30g)"
+            },
+            {
+              "nome": "Milharina / flocão de milho",
+              "porcao": "2 colheres de sopa (30g)"
+            }
+          ]
+        },
+        {
+          "nome": "Mamão",
+          "porcao": "1 fatia fina (100g)",
+          "grupo": "fruta",
+          "substituicoes": [
+            {
+              "nome": "Melão",
+              "porcao": "1 fatia (100g)"
+            },
+            {
+              "nome": "Melancia",
+              "porcao": "1 fatia fina (100g)"
+            },
+            {
+              "nome": "Morango",
+              "porcao": "6 unidades (100g)"
+            }
+          ]
+        },
+        {
+          "nome": "Psyllium",
+          "porcao": "1 colher de chá",
+          "grupo": "outro",
+          "substituicoes": []
+        },
+        {
+          "nome": "Ovo de galinha",
+          "porcao": "2 unidades",
+          "grupo": "proteina",
+          "substituicoes": [
+            {
+              "nome": "Ovo de galinha + Queijo muçarela",
+              "porcao": "1 unidade + 1 fatia fina (20g)"
+            },
+            {
+              "nome": "Queijo minas padrão",
+              "porcao": "1 fatia fina (20g)"
+            }
+          ]
+        },
+        {
+          "nome": "Requeijão Light",
+          "porcao": "1 colher de chá (15g)",
+          "grupo": "proteina",
+          "substituicoes": [
+            {
+              "nome": "Cottage",
+              "porcao": "1 colher de sopa (25g)"
+            }
+          ]
+        },
+        {
+          "nome": "Café",
+          "porcao": "1 xícara de café",
+          "grupo": "outro",
+          "substituicoes": [
+            {
+              "nome": "Chá",
+              "porcao": "1 sachê em 200 mL",
+              "detalhe": "erva-doce, hortelã, camomila etc."
+            }
+          ]
+        }
+      ],
+      "sugestoes": [
+        "Pão com requeijão e queijo, frutas e café ou chá à parte.",
+        "Crepioca com requeijão, frutas e café ou chá à parte.",
+        "Panqueca de milho com requeijão, fruta e café ou chá à parte.",
+        "Panqueca de aveia com requeijão, fruta e café ou chá à parte."
+      ],
+      "observacao": "o psyllium pode ser inserido na panqueca, crepioca ou até mesmo por cima das frutas."
+    },
+    {
+      "id": "lanche-da-manha",
+      "nome": "Lanche da manhã",
+      "horario": "10:00",
+      "padrao": [
+        {
+          "nome": "Banana",
+          "porcao": "1 unidade",
+          "grupo": "fruta",
+          "substituicoes": [
+            {
+              "nome": "Mamão",
+              "porcao": "1 fatia média (150g)"
+            },
+            {
+              "nome": "Maçã",
+              "porcao": "1 unidade pequena"
+            },
+            {
+              "nome": "Pera",
+              "porcao": "1 unidade pequena"
+            }
+          ],
+          "detalhe": "ouro, prata, d’água, da terra etc."
+        }
+      ],
+      "sugestoes": []
+    },
+    {
+      "id": "almoco",
+      "nome": "Almoço",
+      "horario": "12:00",
+      "padrao": [
+        {
+          "nome": "Frango, peito",
+          "porcao": "1 filé grande - 100g",
+          "grupo": "proteina",
+          "substituicoes": [
+            {
+              "nome": "Carne vermelha",
+              "porcao": "1 filé médio/5 colheres de sopa moído - 100g"
+            },
+            {
+              "nome": "Carne de porco",
+              "porcao": "1 filé grande - 100g"
+            },
+            {
+              "nome": "Peixe",
+              "porcao": "1 filé/posta grande - 100g"
+            }
+          ]
+        },
+        {
+          "nome": "Arroz branco",
+          "porcao": "2 colheres de sopa - 50g",
+          "grupo": "carboidrato",
+          "substituicoes": [
+            {
+              "nome": "Arroz parboilizado ou integral",
+              "porcao": "2 colheres de sopa - 50g"
+            },
+            {
+              "nome": "Batata inglesa",
+              "porcao": "1 colher de servir - 110g"
+            },
+            {
+              "nome": "Abóbora",
+              "porcao": "1 colher de servir, picada - 110g"
+            },
+            {
+              "nome": "Batata-doce",
+              "porcao": "2 rodelas finas - 70g"
+            },
+            {
+              "nome": "Quinoa",
+              "porcao": "3 colheres de sopa - 60g"
+            }
+          ]
+        },
+        {
+          "nome": "Feijão",
+          "porcao": "1 concha - 140g",
+          "grupo": "carboidrato",
+          "substituicoes": [
+            {
+              "nome": "Ervilha",
+              "porcao": "6 colheres de sopa - 140g"
+            },
+            {
+              "nome": "Lentilha",
+              "porcao": "6 colheres de sopa - 140g"
+            },
+            {
+              "nome": "Grão-de-bico",
+              "porcao": "5 colheres de sopa - 100g"
+            }
+          ],
+          "detalhe": "preto, mulatinho, roxo, rosinha etc."
+        },
+        {
+          "nome": "Azeite extra virgem",
+          "porcao": "1 colher de sopa (7,6 mL)",
+          "grupo": "gordura",
+          "substituicoes": [
+            {
+              "nome": "Óleo de linhaça",
+              "porcao": "1 colher de sopa (7,6 mL)"
+            }
+          ]
+        },
+        {
+          "nome": "Brócolis",
+          "porcao": "1 colher de servir, picado",
+          "grupo": "vegetal",
+          "substituicoes": [
+            {
+              "nome": "Couve",
+              "porcao": "mesma porção"
+            },
+            {
+              "nome": "Vagem",
+              "porcao": "mesma porção"
+            },
+            {
+              "nome": "Espinafre",
+              "porcao": "mesma porção"
+            }
+          ]
+        },
+        {
+          "nome": "Laranja",
+          "porcao": "1 unidade",
+          "grupo": "fruta",
+          "substituicoes": [
+            {
+              "nome": "Tangerina",
+              "porcao": "1 unidade"
+            },
+            {
+              "nome": "Abacaxi",
+              "porcao": "150g"
+            },
+            {
+              "nome": "Melancia",
+              "porcao": "200g"
+            },
+            {
+              "nome": "Melão",
+              "porcao": "200g"
+            },
+            {
+              "nome": "Manga",
+              "porcao": "100g"
+            }
+          ],
+          "detalhe": "pera, seleta, lima, da terra etc."
+        }
+      ],
+      "sugestoes": [],
+      "hortalicasOrientacao": "Escolha 1 opção",
+      "hortalicas": [
+        "Couve-flor",
+        "Vagem",
+        "Abobrinha",
+        "Berinjela",
+        "Beterraba",
+        "Chuchu",
+        "Cenoura",
+        "Tomate",
+        "Pepino",
+        "Palmito"
+      ]
+    },
+    {
+      "id": "lanche-da-tarde",
+      "nome": "Lanche da tarde",
+      "horario": "16:00",
+      "padrao": [
+        {
+          "nome": "Banana",
+          "porcao": "1 unidade",
+          "grupo": "fruta",
+          "substituicoes": [
+            {
+              "nome": "Maçã",
+              "porcao": "1 unidade"
+            },
+            {
+              "nome": "Pera",
+              "porcao": "1 unidade"
+            }
+          ],
+          "detalhe": "ouro, prata, d’água, da terra etc."
+        },
+        {
+          "nome": "Farelo de aveia",
+          "porcao": "2 colheres de sopa (20g)",
+          "grupo": "carboidrato",
+          "substituicoes": []
+        },
+        {
+          "nome": "Iogurte natural desnatado",
+          "porcao": "1 pote (170g)",
+          "grupo": "proteina",
+          "substituicoes": [
+            {
+              "nome": "Leite desnatado em pó",
+              "porcao": "2 colheres de sopa"
+            },
+            {
+              "nome": "Leite desnatado líquido",
+              "porcao": "200 mL"
+            }
+          ]
+        },
+        {
+          "nome": "Amendoim moído",
+          "porcao": "2 colheres de sopa rasa (20g)",
+          "grupo": "gordura",
+          "substituicoes": [
+            {
+              "nome": "Abacate",
+              "porcao": "100g"
+            }
+          ]
+        },
+        {
+          "nome": "Whey Protein Concentrado",
+          "porcao": "1 colher de sopa (10g)",
+          "grupo": "proteina",
+          "substituicoes": [
+            {
+              "nome": "Albumina",
+              "porcao": "1 colher de sopa (10g)"
+            }
+          ]
+        }
+      ],
+      "sugestoes": [
+        "Iogurte com farelo de aveia, amendoim e fruta.",
+        "Vitamina de fruta com farelo de aveia e abacate."
+      ],
+      "substituta": {
+        "nome": "No lugar do lanche da tarde",
+        "itens": [
+          {
+            "nome": "Alface",
+            "porcao": "2 folhas",
+            "grupo": "vegetal",
+            "substituicoes": []
+          },
+          {
+            "nome": "Requeijão Light",
+            "porcao": "1 colher de chá (15g)",
+            "grupo": "proteina",
+            "substituicoes": [
+              {
+                "nome": "Cottage",
+                "porcao": "1 colher de sopa (25g)"
+              }
+            ]
+          },
+          {
+            "nome": "Tomate",
+            "porcao": "2 fatias pequenas",
+            "grupo": "vegetal",
+            "substituicoes": []
+          },
+          {
+            "nome": "Pão integral",
+            "porcao": "2 fatias (50g)",
+            "grupo": "carboidrato",
+            "substituicoes": [
+              {
+                "nome": "Rap 10 Fit ou similares",
+                "porcao": "1 unidade (40g)"
+              }
+            ]
+          },
+          {
+            "nome": "Banana",
+            "porcao": "1 unidade pequena",
+            "grupo": "fruta",
+            "substituicoes": [
+              {
+                "nome": "Maçã",
+                "porcao": "1 unidade pequena"
+              },
+              {
+                "nome": "Pera",
+                "porcao": "1 unidade pequena"
+              }
+            ],
+            "detalhe": "ouro, prata, d’água, da terra etc."
+          },
+          {
+            "nome": "Amendoim moído",
+            "porcao": "1 colher de sopa rasa (10g)",
+            "grupo": "gordura",
+            "substituicoes": [
+              {
+                "nome": "Nozes",
+                "porcao": "4 unidades (10g)"
+              },
+              {
+                "nome": "Amêndoas",
+                "porcao": "10 unidades (10g)"
+              },
+              {
+                "nome": "Castanha-do-pará",
+                "porcao": "2 unidades (10g)"
+              }
+            ]
+          },
+          {
+            "nome": "Frango, peito",
+            "porcao": "2 colheres de sopa, desfiado (40g)",
+            "grupo": "proteina",
+            "substituicoes": []
+          }
+        ],
+        "observacao": "Sanduíche natural de frango com requeijão. Pode adicionar alface ou rúcula, cenoura ralada e tomate à vontade. Fruta e oleaginosas à parte."
+      }
+    },
+    {
+      "id": "jantar",
+      "nome": "Jantar",
+      "horario": "20:00",
+      "padrao": [
+        {
+          "nome": "Frango, peito",
+          "porcao": "1 filé grande - 100g",
+          "grupo": "proteina",
+          "substituicoes": [
+            {
+              "nome": "Carne vermelha",
+              "porcao": "1 filé médio/5 colheres de sopa moído - 100g"
+            },
+            {
+              "nome": "Carne de porco",
+              "porcao": "1 filé grande - 100g"
+            },
+            {
+              "nome": "Peixe",
+              "porcao": "1 filé/posta grande - 100g"
+            }
+          ]
+        },
+        {
+          "nome": "Arroz branco",
+          "porcao": "2 colheres de sopa - 50g",
+          "grupo": "carboidrato",
+          "substituicoes": [
+            {
+              "nome": "Arroz parboilizado",
+              "porcao": "2 colheres de sopa - 50g"
+            },
+            {
+              "nome": "Batata inglesa",
+              "porcao": "1 colher de servir - 110g"
+            },
+            {
+              "nome": "Abóbora",
+              "porcao": "1 colher de servir, picada - 110g"
+            },
+            {
+              "nome": "Batata-doce",
+              "porcao": "2 rodelas finas - 70g"
+            },
+            {
+              "nome": "Quinoa",
+              "porcao": "3 colheres de sopa - 60g"
+            }
+          ]
+        },
+        {
+          "nome": "Azeite extra virgem",
+          "porcao": "1 colher de sopa (7,6 mL)",
+          "grupo": "gordura",
+          "substituicoes": [
+            {
+              "nome": "Óleo de linhaça",
+              "porcao": "1 colher de sopa (7,6 mL)"
+            }
+          ]
+        },
+        {
+          "nome": "Laranja",
+          "porcao": "1 unidade",
+          "grupo": "fruta",
+          "substituicoes": [
+            {
+              "nome": "Tangerina",
+              "porcao": "1 unidade"
+            },
+            {
+              "nome": "Abacaxi",
+              "porcao": "150g"
+            },
+            {
+              "nome": "Melancia",
+              "porcao": "200g"
+            },
+            {
+              "nome": "Melão",
+              "porcao": "200g"
+            },
+            {
+              "nome": "Manga",
+              "porcao": "100g"
+            },
+            {
+              "nome": "Uva",
+              "porcao": "100g"
+            }
+          ],
+          "detalhe": "pera, seleta, lima, da terra etc."
+        }
+      ],
+      "sugestoes": [],
+      "hortalicasOrientacao": "Escolha 1 a 2 opções · 1 colher de servir",
+      "hortalicas": [
+        "Couve-flor",
+        "Abobrinha",
+        "Berinjela",
+        "Beterraba",
+        "Chuchu",
+        "Cenoura",
+        "Tomate",
+        "Pepino",
+        "Palmito"
+      ],
+      "salada": [
+        "Alface",
+        "Agrião",
+        "Rúcula",
+        "Chicória",
+        "Acelga",
+        "Mostarda",
+        "Bertalha"
+      ],
+      "substituta": {
+        "nome": "No lugar do jantar",
+        "itens": [
+          {
+            "nome": "Alface",
+            "porcao": "2 folhas",
+            "grupo": "vegetal",
+            "substituicoes": [
+              {
+                "nome": "Rúcula",
+                "porcao": "2 colheres de sopa"
+              }
+            ]
+          },
+          {
+            "nome": "Requeijão Light",
+            "porcao": "15g",
+            "grupo": "proteina",
+            "substituicoes": [
+              {
+                "nome": "Cottage",
+                "porcao": "1 colher de sopa (25g)"
+              }
+            ]
+          },
+          {
+            "nome": "Tomate",
+            "porcao": "2 fatias pequenas",
+            "grupo": "vegetal",
+            "substituicoes": []
+          },
+          {
+            "nome": "Frango, peito",
+            "porcao": "1 filé grande (90g)",
+            "grupo": "proteina",
+            "substituicoes": [
+              {
+                "nome": "Ovo de galinha",
+                "porcao": "2 unidades"
+              }
+            ]
+          },
+          {
+            "nome": "Pão integral",
+            "porcao": "2 fatias (50g)",
+            "grupo": "carboidrato",
+            "substituicoes": []
+          },
+          {
+            "nome": "Uva",
+            "porcao": "50g",
+            "grupo": "fruta",
+            "substituicoes": [
+              {
+                "nome": "Melão",
+                "porcao": "100g"
+              },
+              {
+                "nome": "Melancia",
+                "porcao": "100g"
+              },
+              {
+                "nome": "Morango",
+                "porcao": "100g"
+              },
+              {
+                "nome": "Kiwi",
+                "porcao": "1 unidade"
+              },
+              {
+                "nome": "Pêssego",
+                "porcao": "1 unidade"
+              },
+              {
+                "nome": "Ameixa",
+                "porcao": "1 unidade"
+              }
+            ]
+          }
+        ],
+        "observacao": "Sanduíche natural de frango com requeijão ou cottage. Pode adicionar alface ou rúcula, cenoura ralada e tomate à vontade."
+      }
+    }
+  ]
+}
