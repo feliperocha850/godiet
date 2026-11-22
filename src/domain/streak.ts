@@ -28,3 +28,6 @@ export function resultadoDoDia(c: CheckIn | null): 'completo' | 'parcial' | 'vaz
   const marcados = [c.alimentacao, c.agua, c.movimento, c.sono, c.deus].filter(Boolean).length;
   return marcados === 5 ? 'completo' : marcados === 0 ? 'vazio' : 'parcial';
 }
+
+/** Dia anterior a um YYYY-MM-DD. */
+export const diaAnterior = (d: string): string => texto(dia(d) - MS_DIA);

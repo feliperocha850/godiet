@@ -9,9 +9,9 @@ const incentivos = ler('incentivos');
 
 describe('pickMessage', () => {
   const banco: Mensagem[] = [
-    { id: 'a', texto: 'A', tipo: 'incentivo' },
-    { id: 'b', texto: 'B', tipo: 'incentivo' },
-    { id: 'c', texto: 'C', tipo: 'incentivo' },
+    { id: 'a', texto: 'A', tipo: 'incentivo', verificado: false },
+    { id: 'b', texto: 'B', tipo: 'incentivo', verificado: false },
+    { id: 'c', texto: 'C', tipo: 'incentivo', verificado: false },
   ];
   it('nunca repete o último em 1.000 sorteios', () => {
     let ultimo: string | null = null;
