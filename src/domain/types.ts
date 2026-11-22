@@ -36,3 +36,12 @@ export type Mensagem = {
   /** true só depois da revisão do Felipe (e, nos versículos, da conferência no texto oficial). */
   verificado: boolean;
 };
+
+export type CheckIn = {
+  dia: string; // YYYY-MM-DD no fuso de São Paulo
+  alimentacao: boolean;
+  agua: boolean;
+  movimento: boolean;
+  sono: boolean;
+  deus: boolean;
+};
