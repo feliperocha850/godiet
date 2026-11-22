@@ -209,7 +209,7 @@ describe('Calculadora de gasto calórico', () => {
     renderCalculadora(e, ctxComTodasAsFaixas().ctx);
     preencher(e, entrada);
     expect(e.querySelector('[data-testid=resultado]')!.textContent).toContain('1.815 kcal');
-    expect(e.querySelector('[data-testid=resultado]')!.textContent).toContain('1.500 kcal');
+    expect(e.querySelector('[data-testid=resultado]')!.textContent).toContain('1.407 kcal');
   });
   it('"Usar este cardápio" grava a faixa e vai para o cardápio', () => {
     const { ctx } = ctxComTodasAsFaixas();
@@ -217,7 +217,7 @@ describe('Calculadora de gasto calórico', () => {
     renderCalculadora(e, ctx);
     preencher(e, entrada);
     (e.querySelector('[data-acao=usar]') as HTMLElement).click();
-    expect(ctx.prefs.get().kcal).toBe(1500);
+    expect(ctx.prefs.get().kcal).toBe(1400);
     expect(window.location.hash).toBe('#/cardapio');
   });
   it('menor de 18 anos: mensagem, sem resultado', () => {

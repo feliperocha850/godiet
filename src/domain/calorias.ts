@@ -13,8 +13,8 @@ export type Entrada = {
 };
 
 export const FATOR_ATIVIDADE: Record<Atividade, number> = { sedentario: 1.2, leve: 1.375, moderado: 1.55, intenso: 1.725 };
-/** Meta ao emagrecer = 80% do gasto estimado (ajuste profissional do Felipe pendente de confirmação). */
-export const FRACAO_EMAGRECER = 0.8;
+/** Meta ao emagrecer = gasto − 22,5% (meio do déficit de 20–25% definido pelo Felipe; cerca de 500 kcal/dia). */
+export const FRACAO_EMAGRECER = 0.775;
 
 export type Resultado = { tmb: number; gastoTotal: number; meta: number; faixa: number; aviso?: 'abaixo' | 'acima' };
 

@@ -23,4 +23,12 @@ describe('tema', () => {
       .filter((f) => /#[0-9a-fA-F]{3,6}\b/.test(readFileSync(f, 'utf8')));
     expect(ruins).toEqual([]);
   });
+
+  it('campos do formulário (números digitados) têm texto preto e opaco', () => {
+    const css = readFileSync('src/theme.css', 'utf8');
+    const regra = css.match(/form\.cartao input[^{]*\{[^}]*\}/g)?.join(' ') ?? '';
+    expect(regra).toContain('color: var(--texto)');
+    expect(regra).toContain('-webkit-text-fill-color: var(--texto)');
+    expect(regra).toContain('opacity: 1');
+  });
 });

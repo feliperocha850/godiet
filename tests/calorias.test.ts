@@ -19,12 +19,13 @@ describe('calcular (Mifflin-St Jeor × fator de atividade)', () => {
   it.each([['sedentario', 1.2], ['leve', 1.375], ['moderado', 1.55], ['intenso', 1.725]] as const)('fator %s = %s', (a, f) => {
     expect(calcular({ ...homem, atividade: a }, FAIXAS).gastoTotal).toBe(Math.round(1780 * f));
   });
-  it('emagrecer usa 80% do gasto; manter usa 100%', () => {
-    expect(calcular({ ...mulher, objetivo: 'emagrecer' }, FAIXAS).meta).toBe(Math.round(1815 * 0.8));
+  it('emagrecer usa déficit de 22,5% (meio de 20–25%, cerca de 500 kcal); manter usa 100%', () => {
+    expect(calcular({ ...mulher, objetivo: 'emagrecer' }, FAIXAS).meta).toBe(1407);
+    expect(calcular({ ...homem, objetivo: 'emagrecer' }, FAIXAS).meta).toBe(1897); // 2448 − 551
     expect(calcular(mulher, FAIXAS).meta).toBe(1815);
   });
   it('sugere a faixa mais próxima da meta ', () => {
-    expect(calcular({ ...mulher, objetivo: 'emagrecer' }, FAIXAS).faixa).toBe(1500); // meta 1452
+    expect(calcular({ ...mulher, objetivo: 'emagrecer' }, FAIXAS).faixa).toBe(1400); // meta 1407
     expect(calcular(mulher, FAIXAS).faixa).toBe(1800); // meta 1815
     expect(calcular(mulher, [1700, 1900]).faixa).toBe(1900); // 1815 está a 85 de 1900 e a 115 de 1700
   });
