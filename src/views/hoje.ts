@@ -2,6 +2,7 @@ import type { Contexto } from '../app/contexto';
 import { iconeRefeicao } from './icones';
 import { proximaRefeicao } from '../domain/agenda';
 import { computeStreak, diaAnterior, diaLocal, resultadoDoDia } from '../domain/streak';
+import { reflexaoDoDia } from '../domain/messages';
 import { esc, htmlMensagem, sortear } from './util';
 
 export function renderHoje(el: HTMLElement, ctx: Contexto): void {
@@ -32,8 +33,15 @@ export function renderHoje(el: HTMLElement, ctx: Contexto): void {
       </div>`;
   }
 
+  const refl = ctx.reflexoes.length ? reflexaoDoDia(ctx.reflexoes, hoje) : null;
+  const palavra = refl
+    ? `<div class="cartao reflexao" data-testid="palavra-do-dia"><h2>Palavra do dia</h2>
+        <blockquote>${esc(refl.texto ?? '')}<cite> — ${esc(refl.referencia ?? '')}</cite></blockquote></div>`
+    : '';
+
   el.innerHTML = `
     <h1>Hoje</h1>
+    ${palavra}
     ${incentivo}
     ${refeicao}
     <div class="cartao"><p data-testid="sequencia"><strong>${sequencia}</strong> ${sequencia === 1 ? 'dia seguido' : 'dias seguidos'} de check-in</p>

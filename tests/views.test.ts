@@ -31,6 +31,15 @@ describe('Hoje', () => {
     expect(e.querySelector('[data-testid=texto-refeicao]')?.textContent?.length).toBeGreaterThan(10);
     expect(e.querySelector('a[href="#/checkin"]')).not.toBeNull();
   });
+  it('mostra a palavra do dia logo no topo, mesmo sem cardápio escolhido', () => {
+    const { ctx } = criarCtx();
+    const e = el();
+    renderHoje(e, ctx);
+    const palavra = e.querySelector('[data-testid=palavra-do-dia]');
+    expect(palavra?.textContent?.length).toBeGreaterThan(20);
+    expect(e.querySelector('h1')!.compareDocumentPosition(palavra!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(palavra!.compareDocumentPosition(e.querySelector('a[href="#/cardapio"]')!) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
   it('sem cardápio escolhido → convida a escolher', () => {
     const { ctx } = criarCtx();
     const e = el();
