@@ -28,7 +28,7 @@ export function renderCardapio(el: HTMLElement, ctx: Contexto): void {
     const faixas = Object.keys(ctx.cardapios).map(Number).sort((a, b) => a - b);
     el.innerHTML = `
       <h1>Escolha seu cardápio</h1>
-      <p>Escolha a faixa de calorias do seu plano. Se tiver dúvida, refaça o cálculo do seu gasto calórico seguindo o passo a passo da aula do curso.</p>
+      <p>Escolha a faixa de calorias do seu plano. Se tiver dúvida, <a href="#/calculadora">calcule seu gasto calórico</a> e veja qual faixa combina com você.</p>
       <div class="faixas">${faixas.map((k) => `<button class="botao secundario" data-kcal="${k}">${kcalTexto(k)}</button>`).join('')}</div>`;
     el.querySelectorAll('button[data-kcal]').forEach((b) =>
       b.addEventListener('click', () => {

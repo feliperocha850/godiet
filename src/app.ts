@@ -4,6 +4,8 @@ import { renderHoje } from './views/hoje';
 import { renderCardapio } from './views/cardapio';
 import { renderCompras } from './views/compras';
 import { renderCheckin } from './views/checkin';
+import { ICONES_MENU } from './views/icones-menu';
+import { renderCalculadora } from './views/calculadora';
 import { renderAulas } from './views/aulas';
 import { renderPrivacidade } from './views/privacidade';
 
@@ -24,6 +26,7 @@ const ROTAS: Record<string, (el: HTMLElement, ctx: Contexto) => void> = {
   '#/compras': renderCompras,
   '#/checkin': renderCheckin,
   '#/aulas': renderAulas,
+  '#/calculadora': renderCalculadora,
   '#/privacidade': (el) => renderPrivacidade(el),
 };
 
@@ -44,7 +47,7 @@ export async function montar(raiz: HTMLElement, deps: DepsApp): Promise<void> {
   raiz.innerHTML = `
     <main id="conteudo"></main>
     <nav class="inferior">
-      <a href="#/">Hoje</a><a href="#/cardapio">Cardápio</a><a href="#/compras">Compras</a><a href="#/checkin">Check-in</a><a href="#/aulas">Aulas</a><button type="button" class="sair" data-acao="sair">Sair</button>
+      <a href="#/">${ICONES_MENU.hoje}<span>Hoje</span></a><a href="#/cardapio">${ICONES_MENU.cardapio}<span>Cardápio</span></a><a href="#/compras">${ICONES_MENU.compras}<span>Compras</span></a><a href="#/checkin">${ICONES_MENU.checkin}<span>Check-in</span></a><a href="#/aulas">${ICONES_MENU.aulas}<span>Aulas</span></a><button type="button" class="sair" data-acao="sair">${ICONES_MENU.sair}<span>Sair</span></button>
     </nav>`;
   raiz.querySelector('[data-acao=sair]')!.addEventListener('click', async () => {
     await deps.sair?.();

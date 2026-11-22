@@ -77,3 +77,9 @@ nav.inferior a { white-space: nowrap; font-size: .95rem; padding: .4rem .35rem; 
 .reflexao { background: var(--verde-claro); }
 .reflexao blockquote { margin: .3rem 0; }
 .reflexao small { color: var(--texto); opacity: .7; }
+
+/* menu inferior com ícone acima do nome */
+nav.inferior a, nav.inferior .sair { display: flex; flex-direction: column; align-items: center; gap: .1rem; font-size: .72rem; line-height: 1.1; padding: .3rem .25rem; min-width: 3.4rem; }
+nav.inferior .icone-menu { width: 24px; height: 24px; }
+form.cartao input:not([type=radio]), form.cartao select { width: 100%; padding: .6rem; font: inherit; border: 1px solid var(--verde-medio); border-radius: 10px; background: var(--branco); }
+form.cartao label { font-weight: 600; }

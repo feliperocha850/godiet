@@ -1,11 +1,12 @@
 // @vitest-environment jsdom
 import { describe, it, expect } from 'vitest';
-import { criarCtx } from './helpers/ctx';
+import { criarCtx, cardapio } from './helpers/ctx';
 import { renderHoje } from '../src/views/hoje';
 import { renderCardapio } from '../src/views/cardapio';
 import { renderCompras } from '../src/views/compras';
 import { renderCheckin } from '../src/views/checkin';
 import { renderAulas } from '../src/views/aulas';
+import { renderCalculadora } from '../src/views/calculadora';
 import { montar } from '../src/app';
 
 const el = () => document.createElement('div');
@@ -172,6 +173,70 @@ describe('Check-in: reflexão e anotações', () => {
     const e = el();
     renderCheckin(e, ctx);
     expect((e.querySelector('textarea[name=nota-sono]') as HTMLTextAreaElement).value).toBe('dormi bem');
+  });
+});
+
+describe('Menu inferior', () => {
+  it('cada item tem ícone e nome', async () => {
+    const { ctx } = criarCtx({ prefs: { kcal: 1100 } });
+    const a = el();
+    await montar(a, { ctx, acesso: async () => 'ativo', login: { pedirCodigo: async () => ({ ok: true as const }), confirmarCodigo: async () => true } });
+    const itens = [...a.querySelectorAll('nav.inferior > *')];
+    expect(itens.map((i) => i.textContent!.trim())).toEqual(['Hoje', 'Cardápio', 'Compras', 'Check-in', 'Aulas', 'Sair']);
+    for (const i of itens) expect(i.querySelector('svg[aria-hidden="true"]')).not.toBeNull();
+  });
+});
+
+const ctxComTodasAsFaixas = (...a: Parameters<typeof criarCtx>) => {
+  const r = criarCtx(...a);
+  r.ctx.cardapios = Object.fromEntries(Array.from({ length: 12 }, (_, i) => 1100 + i * 100).map((k) => [k, cardapio(k)]));
+  return r;
+};
+
+describe('Calculadora de gasto calórico', () => {
+  const preencher = (e: HTMLElement, v: Record<string, string>) => {
+    for (const [nome, valor] of Object.entries(v)) {
+      const campo = e.querySelector(`[name=${nome}]`) as HTMLInputElement;
+      if (campo.type === 'radio') (e.querySelector(`[name=${nome}][value=${valor}]`) as HTMLInputElement).checked = true;
+      else campo.value = valor;
+    }
+    e.querySelector('form')!.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
+  };
+  const entrada = { sexo: 'F', idade: '30', peso: '60', altura: '165', atividade: 'leve', objetivo: 'emagrecer' };
+
+  it('mostra gasto, meta e a faixa sugerida', () => {
+    const e = el();
+    renderCalculadora(e, ctxComTodasAsFaixas().ctx);
+    preencher(e, entrada);
+    expect(e.querySelector('[data-testid=resultado]')!.textContent).toContain('1.815 kcal');
+    expect(e.querySelector('[data-testid=resultado]')!.textContent).toContain('1.500 kcal');
+  });
+  it('"Usar este cardápio" grava a faixa e vai para o cardápio', () => {
+    const { ctx } = ctxComTodasAsFaixas();
+    const e = el();
+    renderCalculadora(e, ctx);
+    preencher(e, entrada);
+    (e.querySelector('[data-acao=usar]') as HTMLElement).click();
+    expect(ctx.prefs.get().kcal).toBe(1500);
+    expect(window.location.hash).toBe('#/cardapio');
+  });
+  it('menor de 18 anos: mensagem, sem resultado', () => {
+    const e = el();
+    renderCalculadora(e, ctxComTodasAsFaixas().ctx);
+    preencher(e, { ...entrada, idade: '16' });
+    expect(e.querySelector('[data-testid=resultado]')).toBeNull();
+    expect(e.textContent).toContain('18 anos');
+  });
+  it('o resultado traz o aviso de que é estimativa', () => {
+    const e = el();
+    renderCalculadora(e, ctxComTodasAsFaixas().ctx);
+    preencher(e, entrada);
+    expect(e.textContent).toMatch(/estimativa/i);
+  });
+  it('o Cardápio sem faixa escolhida oferece a calculadora', () => {
+    const e = el();
+    renderCardapio(e, criarCtx().ctx);
+    expect(e.querySelector('a[href="#/calculadora"]')).not.toBeNull();
   });
 });
 
