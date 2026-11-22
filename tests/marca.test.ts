@@ -25,6 +25,14 @@ describe('marca GODIET', () => {
     expect(topo.textContent).toBe('GODIET');
     expect(a.firstElementChild).toBe(topo);
   });
+  it('o ícone do app aparece ao lado do nome, no topo', async () => {
+    const a = el();
+    await montar(a, { ctx: criarCtx().ctx, acesso: async () => 'ativo', login });
+    const img = a.querySelector('header.topo img.logo') as HTMLImageElement;
+    expect(img).not.toBeNull();
+    expect(img.getAttribute('alt')).toBe('');
+    expect(a.querySelector('header.topo')!.firstElementChild).toBe(img);
+  });
   it('aparece na tela de login', () => {
     const a = el();
     renderLogin(a, login, () => {});

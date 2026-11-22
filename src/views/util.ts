@@ -1,3 +1,4 @@
+import logo from '../assets/logo.png';
 import { pickMessage } from '../domain/messages';
 import type { Mensagem } from '../domain/types';
 import type { Contexto } from '../app/contexto';
@@ -20,6 +21,6 @@ export function htmlMensagem(m: Mensagem, testid = 'texto-refeicao'): string {
 
 /** Nome do app: GOD (Deus) em negrito + IET (de "diet") normal. */
 export const marcaHtml = () => '<span class="marca" aria-label="GODIET"><strong>GOD</strong>IET</span>';
-export const topoHtml = () => `<header class="topo">${marcaHtml()}</header>`;
+export const topoHtml = () => `<header class="topo"><img class="logo" src="${logo}" alt="" width="36" height="36">${marcaHtml()}</header>`;
 
 export const kcalTexto = (k: number) => `${k.toLocaleString('pt-BR')} kcal`;

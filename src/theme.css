@@ -28,7 +28,7 @@ body {
 h1, h2, h3 { color: var(--verde-escuro); margin: 0 0 .5rem; }
 h1 { font-size: 1.1rem; }
 h2 { font-size: 1.2rem; }
-.topo { position: sticky; top: 0; z-index: 5; margin: -1rem -1rem .5rem; padding: .55rem 1rem; text-align: center; background: var(--fundo); border-bottom: 1px solid var(--verde-medio); }
+.topo { display: flex; align-items: center; justify-content: center; gap: .6rem; position: sticky; top: 0; z-index: 5; margin: -1rem -1rem .5rem; padding: .55rem 1rem; text-align: center; background: var(--fundo); border-bottom: 1px solid var(--verde-medio); }
 .marca { font-size: 1.5rem; letter-spacing: .12em; color: var(--verde-escuro); font-weight: 400; }
 .marca strong { font-weight: 800; }
 strong, b { font-weight: 700; }
@@ -88,3 +88,4 @@ nav.inferior a, nav.inferior .sair { display: flex; flex-direction: column; alig
 nav.inferior .icone-menu { width: 24px; height: 24px; }
 form.cartao input:not([type=radio]), form.cartao select { color: var(--texto); -webkit-text-fill-color: var(--texto); opacity: 1; width: 100%; padding: .6rem; font: inherit; border: 1px solid var(--verde-medio); border-radius: 10px; background: var(--branco); }
 form.cartao label { font-weight: 600; }
+.topo .logo { width: 36px; height: 36px; border-radius: 9px; box-shadow: 0 1px 3px rgba(0, 0, 0, .25); }
