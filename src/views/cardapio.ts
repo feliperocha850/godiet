@@ -1,4 +1,5 @@
 import type { Contexto } from '../app/contexto';
+import { iconeRefeicao } from './icones';
 import type { Item, Refeicao } from '../domain/types';
 import { esc, kcalTexto } from './util';
 
@@ -10,7 +11,7 @@ const itemHtml = (i: Item) => `
 function refeicaoHtml(r: Refeicao): string {
   return `
   <section class="cartao">
-    <h2>${esc(r.nome)} · ${esc(r.horario)}</h2>
+    <h2 class="com-icone">${iconeRefeicao(r.id)}<span>${esc(r.nome)} · ${esc(r.horario)}</span></h2>
     <ul>${r.padrao.map(itemHtml).join('')}</ul>
     ${r.hortalicas?.length ? `<p><strong>Vegetais complementares</strong>${r.hortalicasOrientacao ? ` (${esc(r.hortalicasOrientacao)})` : ''}: ${r.hortalicas.map(esc).join(', ')}</p>` : ''}
     ${r.salada?.length ? `<p><strong>Salada verde</strong>: ${r.salada.map(esc).join(', ')}</p>` : ''}

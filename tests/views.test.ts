@@ -140,6 +140,56 @@ describe('Check-in', () => {
   });
 });
 
+describe('Check-in: reflexão e anotações', () => {
+  it('mostra a reflexão bíblica do dia com a referência', () => {
+    const e = el();
+    renderCheckin(e, criarCtx().ctx);
+    const r = e.querySelector('[data-testid=reflexao]')!;
+    expect(r.textContent!.length).toBeGreaterThan(40);
+    expect(r.querySelector('cite')?.textContent).toMatch(/\d/);
+  });
+  it('cada um dos 5 itens tem um campo de anotação com exemplo suave', () => {
+    const e = el();
+    renderCheckin(e, criarCtx().ctx);
+    for (const n of ['alimentacao', 'agua', 'movimento', 'sono', 'deus']) {
+      const t = e.querySelector(`textarea[name=nota-${n}]`) as HTMLTextAreaElement;
+      expect(t.placeholder).toMatch(/^Ex\.:/);
+    }
+    expect((e.querySelector('textarea[name=nota-alimentacao]') as HTMLTextAreaElement).placeholder).toContain('refeições');
+  });
+  it('escrever uma anotação salva junto com o check-in', async () => {
+    const { ctx, salvos } = criarCtx();
+    const e = el();
+    renderCheckin(e, ctx);
+    const t = e.querySelector('textarea[name=nota-agua]') as HTMLTextAreaElement;
+    t.value = 'bebi 2 litros';
+    t.dispatchEvent(new Event('change', { bubbles: true }));
+    await espera();
+    expect(salvos.at(-1)?.notas?.agua).toBe('bebi 2 litros');
+  });
+  it('anotação já salva volta preenchida', () => {
+    const { ctx } = criarCtx({ checkins: [{ ...completo('2026-11-21'), notas: { sono: 'dormi bem' } }] });
+    const e = el();
+    renderCheckin(e, ctx);
+    expect((e.querySelector('textarea[name=nota-sono]') as HTMLTextAreaElement).value).toBe('dormi bem');
+  });
+});
+
+describe('Ícones das refeições', () => {
+  it('cada refeição do cardápio tem um ícone', () => {
+    const e = el();
+    const { ctx } = criarCtx({ prefs: { kcal: 2200 } });
+    renderCardapio(e, ctx);
+    expect(e.querySelectorAll('svg[data-icone]').length).toBe(ctx.cardapios[2200].refeicoes.length);
+    expect(new Set([...e.querySelectorAll('svg[data-icone]')].map((s) => s.getAttribute('data-icone'))).size).toBe(5);
+  });
+  it('a tela Hoje mostra o ícone da próxima refeição', () => {
+    const e = el();
+    renderHoje(e, criarCtx({ prefs: { kcal: 1100 } }).ctx);
+    expect(e.querySelector('svg[data-icone]')).not.toBeNull();
+  });
+});
+
 describe('Check-in com acesso bloqueado', () => {
   it('avisa que o acesso não está ativo, em vez de dizer que vai sincronizar', async () => {
     const { ctx } = criarCtx();

@@ -27,7 +27,7 @@ const padrao = (): DepsCheckin => ({
     const { data } = await cli.auth.getSession();
     const email = data.session?.user.email;
     if (!email) throw new Error('sem sessão');
-    const { error } = await cli.from('checkins').upsert({ email: email.toLowerCase(), ...c }, { onConflict: 'email,dia' });
+    const { error } = await cli.from('checkins').upsert({ email: email.toLowerCase(), ...c, notas: c.notas ?? {} }, { onConflict: 'email,dia' });
     if (error) throw error;
   },
   storage: localStorage,

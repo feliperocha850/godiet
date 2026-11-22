@@ -5,6 +5,7 @@ import { definirUsuario, pendentes, salvarCheckin, sincronizarPendentes } from '
 import { getClient } from '../lib/supabase';
 import versiculos from '../data/versiculos.json';
 import incentivos from '../data/incentivos.json';
+import reflexoes from '../data/reflexoes.json';
 
 const modulos = import.meta.glob('../data/cardapios/*.json', { eager: true, import: 'default' }) as Record<string, Cardapio>;
 
@@ -53,7 +54,7 @@ export async function criarContextoReal(): Promise<Contexto> {
       await sincronizarPendentes(); // o que ficou sem internet vai primeiro; o servidor já tem a versão mais nova
       const { data: p } = await cli.from('preferencias').select('kcal,trocas,hortalicas').eq('email', email).maybeSingle();
       if (p) prefs = { ...prefs, kcal: p.kcal, trocas: p.trocas ?? {}, hortalicas: p.hortalicas ?? [] };
-      const { data: lista } = await cli.from('checkins').select('dia,alimentacao,agua,movimento,sono,deus').eq('email', email).order('dia', { ascending: false }).limit(120);
+      const { data: lista } = await cli.from('checkins').select('dia,alimentacao,agua,movimento,sono,deus,notas').eq('email', email).order('dia', { ascending: false }).limit(120);
       for (const c of lista ?? []) checkins.set(c.dia, c as CheckIn);
       for (const c of pendentes()) checkins.set(c.dia, c); // o que ainda não subiu vale mais que a linha do servidor
       gravar('prefs', prefs);
@@ -67,6 +68,7 @@ export async function criarContextoReal(): Promise<Contexto> {
     cardapios,
     versiculos: versiculos as Mensagem[],
     incentivos: incentivos as Mensagem[],
+    reflexoes: reflexoes as Mensagem[],
     prefs: {
       get: () => prefs,
       set(p) {

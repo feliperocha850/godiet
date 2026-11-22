@@ -14,6 +14,7 @@ export function criarCtx(opcoes: { agora?: string; prefs?: Partial<Preferencias>
     cardapios: Object.fromEntries([1100, 1400, 2200].map((k) => [k, cardapio(k)])),
     versiculos: ler('versiculos'),
     incentivos: ler('incentivos'),
+    reflexoes: ler('reflexoes'),
     prefs: { get: () => prefs, set: (p) => void (prefs = p) },
     checkins: {
       get: (d) => checkins.get(d) ?? null,

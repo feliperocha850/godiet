@@ -14,6 +14,7 @@ export interface Contexto {
   cardapios: Record<number, Cardapio>;
   versiculos: Mensagem[];
   incentivos: Mensagem[];
+  reflexoes: Mensagem[];
   prefs: { get(): Preferencias; set(p: Preferencias): void };
   checkins: {
     get(dia: string): CheckIn | null;

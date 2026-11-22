@@ -1,4 +1,5 @@
 import type { Contexto } from '../app/contexto';
+import { iconeRefeicao } from './icones';
 import { proximaRefeicao } from '../domain/agenda';
 import { computeStreak, diaAnterior, diaLocal, resultadoDoDia } from '../domain/streak';
 import { esc, htmlMensagem, sortear } from './util';
@@ -24,7 +25,7 @@ export function renderHoje(el: HTMLElement, ctx: Contexto): void {
     const m = sortear(ctx, ctx.versiculos, 'ultimo-refeicao');
     refeicao = `
       <div class="cartao">
-        <h2>${esc(r.nome)} · ${esc(r.horario)}</h2>
+        <h2 class="com-icone">${iconeRefeicao(r.id)}<span>${esc(r.nome)} · ${esc(r.horario)}</span></h2>
         ${htmlMensagem(m)}
         <ul>${r.padrao.map((i) => `<li><strong>${esc(i.nome)}</strong> — ${esc(i.porcao)}</li>`).join('')}</ul>
         <a href="#/cardapio">Ver cardápio completo</a>

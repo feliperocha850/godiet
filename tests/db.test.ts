@@ -71,3 +71,12 @@ describe('banco e regras de acesso', () => {
     await como('a@x.com', `insert into preferencias (email, kcal) values ('a@x.com', 1500)`);
   });
 });
+
+describe('anotações do check-in', () => {
+  it('o aluno ativo guarda e lê as anotações dos próprios check-ins', async () => {
+    await db.exec(`select liberar_aluno('n@x.com')`);
+    await db.exec(`insert into checkins (email, dia, agua, notas) values ('n@x.com', '2026-11-21', true, '{"agua":"bebi 2 litros"}')`);
+    const r = await como<{ notas: Record<string, string> }>('n@x.com', `select notas from checkins`);
+    expect(r[0].notas.agua).toBe('bebi 2 litros');
+  });
+});

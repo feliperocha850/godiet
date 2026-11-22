@@ -27,7 +27,7 @@ export type Cardapio = { kcal: number; refeicoes: Refeicao[] };
 
 export type Mensagem = {
   id: string;
-  tipo: 'versiculo' | 'oracao' | 'incentivo' | 'gratidao';
+  tipo: 'versiculo' | 'oracao' | 'incentivo' | 'gratidao' | 'reflexao';
   /** Texto exibido. Nos versículos, deve ser o texto oficial da NAA (a preencher a partir de fonte licenciada). */
   texto?: string;
   referencia?: string;
@@ -44,4 +44,6 @@ export type CheckIn = {
   movimento: boolean;
   sono: boolean;
   deus: boolean;
+  /** Anotações livres de cada item (opcionais). */
+  notas?: Partial<Record<'alimentacao' | 'agua' | 'movimento' | 'sono' | 'deus', string>>;
 };

@@ -3,7 +3,7 @@
 Estado em 2026-11-21: o núcleo do app está construído e testado. Falta tudo o que depende de contas e decisões do Felipe.
 
 ## 1. Contas e configuração (Felipe)
-- [ ] Projeto no Supabase; aplicar `supabase/migrations/001` a `004` (SQL Editor, na ordem). Conferir as regras de acesso com um aluno ativo e um bloqueado.
+- [ ] Projeto no Supabase; aplicar `supabase/migrations/001` a `005` (SQL Editor, na ordem). Conferir as regras de acesso com um aluno ativo e um bloqueado.
 - [ ] Autenticação do Supabase: **desligar "Allow new users to sign up"** (só a compra cria usuário, pelo webhook); e-mail por código, texto do e-mail em português, **serviço de envio próprio** (o padrão tem limite baixo), "Confirm email" ligado.
 - [ ] Repositório no GitHub com Pages ativado; segredos `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_AULAS_URL` (link da área do aluno na Eduzz).
 - [ ] Publicar a função `eduzz-webhook` (Edge Function) com o segredo `EDUZZ_WEBHOOK_TOKEN` (texto longo e aleatório). `supabase/config.toml` já desliga a verificação de JWT dessa função (a Eduzz não envia); se publicar pelo painel, use "Verify JWT" desligado.
