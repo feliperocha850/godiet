@@ -1,4 +1,5 @@
 // @vitest-environment jsdom
+window.scrollTo = () => {}; // jsdom não implementa a rolagem
 import { describe, it, expect } from 'vitest';
 import { criarCtx, cardapio } from './helpers/ctx';
 import { renderHoje } from '../src/views/hoje';

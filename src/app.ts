@@ -56,7 +56,10 @@ export async function montar(raiz: HTMLElement, deps: DepsApp): Promise<void> {
     void montar(raiz, deps);
   });
   const conteudo = raiz.querySelector('#conteudo') as HTMLElement;
-  const desenhar = () => (ROTAS[window.location.hash] ?? renderHoje)(conteudo, ctx);
+  const desenhar = () => {
+    (ROTAS[window.location.hash] ?? renderHoje)(conteudo, ctx);
+    try { window.scrollTo(0, 0); } catch { /* ambiente sem rolagem */ }
+  };
   if (ouvinte) window.removeEventListener('hashchange', ouvinte);
   ouvinte = desenhar;
   window.addEventListener('hashchange', desenhar);

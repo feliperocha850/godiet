@@ -3,10 +3,10 @@ import { calcular, validarEntrada, type Atividade, type Entrada } from '../domai
 import { esc, kcalTexto } from './util';
 
 const ATIVIDADES: { v: Atividade; r: string }[] = [
-  { v: 'sedentario', r: 'Sedentário (pouco ou nenhum exercício)' },
-  { v: 'leve', r: 'Leve (exercício 1 a 3 dias por semana)' },
-  { v: 'moderado', r: 'Moderado (exercício 3 a 5 dias por semana)' },
-  { v: 'intenso', r: 'Intenso (exercício 6 a 7 dias por semana)' },
+  { v: 'sedentario', r: 'Sedentário (quase nenhum exercício)' },
+  { v: 'leve', r: 'Leve (1 a 3 dias por semana)' },
+  { v: 'moderado', r: 'Moderado (3 a 5 dias por semana)' },
+  { v: 'intenso', r: 'Intenso (6 a 7 dias por semana)' },
 ];
 
 export function renderCalculadora(el: HTMLElement, ctx: Contexto): void {
