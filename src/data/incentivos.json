@@ -1,0 +1,188 @@
+[
+  {
+    "id": "i01",
+    "tipo": "incentivo",
+    "texto": "Hoje foi um dia diferente do planejado. Amanhã é uma nova chance de recomeçar, sem pressa e sem peso.",
+    "verificado": false
+  },
+  {
+    "id": "i02",
+    "tipo": "incentivo",
+    "texto": "Um dia mais corrido não apaga o que você já construiu. Respire e retome na próxima refeição.",
+    "verificado": false
+  },
+  {
+    "id": "i03",
+    "tipo": "incentivo",
+    "texto": "Cuidar de si é um caminho, não uma prova. O passo de hoje pode ser pequeno, e ainda assim conta.",
+    "verificado": false
+  },
+  {
+    "id": "i04",
+    "tipo": "incentivo",
+    "texto": "Nem todo dia sai como queremos. O importante é voltar, com calma, ao que é possível agora.",
+    "verificado": false
+  },
+  {
+    "id": "i05",
+    "tipo": "incentivo",
+    "texto": "Você não precisa recuperar nada. Basta fazer a próxima escolha com cuidado.",
+    "verificado": false
+  },
+  {
+    "id": "i06",
+    "tipo": "incentivo",
+    "texto": "Mesmo com o dia difícil, você abriu o app e olhou para o seu cuidado. Isso importa.",
+    "verificado": false
+  },
+  {
+    "id": "i07",
+    "tipo": "incentivo",
+    "texto": "Recomeçar faz parte. Faça a próxima refeição com atenção e gratidão.",
+    "verificado": false
+  },
+  {
+    "id": "i08",
+    "tipo": "incentivo",
+    "texto": "Se hoje não deu para marcar tudo, tudo bem. Marque o que foi possível e siga em frente.",
+    "verificado": false
+  },
+  {
+    "id": "i09",
+    "tipo": "incentivo",
+    "texto": "Constância é feita de muitos dias imperfeitos. Amanhã você retoma de onde puder.",
+    "verificado": false
+  },
+  {
+    "id": "i10",
+    "tipo": "incentivo",
+    "texto": "Descansar também é cuidar. Se foi um dia pesado, deixe amanhã trazer um novo começo.",
+    "verificado": false
+  },
+  {
+    "id": "i11",
+    "tipo": "incentivo",
+    "texto": "Você é mais do que um check-in. Seja gentil consigo mesmo(a) hoje.",
+    "verificado": false
+  },
+  {
+    "id": "i12",
+    "tipo": "incentivo",
+    "texto": "Um passo de cada vez. Hoje, talvez, seja só um copo de água e uma oração. Já é um bom começo.",
+    "verificado": false
+  },
+  {
+    "id": "i13",
+    "tipo": "incentivo",
+    "texto": "As misericórdias do Senhor se renovam a cada manhã. Amanhã é um novo dia.",
+    "verificado": false,
+    "referencia": "Lamentações 3:22-23"
+  },
+  {
+    "id": "i14",
+    "tipo": "incentivo",
+    "texto": "Não nos cansemos de fazer o bem. A seu tempo, a colheita virá.",
+    "verificado": false,
+    "referencia": "Gálatas 6:9"
+  },
+  {
+    "id": "i15",
+    "tipo": "incentivo",
+    "texto": "Quem caiu pode se levantar. Deus sustenta quem recomeça.",
+    "verificado": false,
+    "referencia": "Salmo 37:23-24"
+  },
+  {
+    "id": "i16",
+    "tipo": "incentivo",
+    "texto": "O justo cai e se levanta. Levante-se com calma, o Senhor está com você.",
+    "verificado": false,
+    "referencia": "Provérbios 24:16"
+  },
+  {
+    "id": "i17",
+    "tipo": "incentivo",
+    "texto": "Não tema: Deus fortalece e ampara quem confia nele.",
+    "verificado": false,
+    "referencia": "Isaías 41:10"
+  },
+  {
+    "id": "i18",
+    "tipo": "incentivo",
+    "texto": "Entregue a ansiedade de hoje a Deus. Ele cuida de você.",
+    "verificado": false,
+    "referencia": "1 Pedro 5:7"
+  },
+  {
+    "id": "i19",
+    "tipo": "incentivo",
+    "texto": "Seu valor não depende do que você comeu hoje. Você é amado(a) por Deus, e o cuidado segue amanhã.",
+    "verificado": false
+  },
+  {
+    "id": "i20",
+    "tipo": "incentivo",
+    "texto": "Pequenos cuidados diários, feitos com fé, vão se somando com o tempo.",
+    "verificado": false
+  },
+  {
+    "id": "i21",
+    "tipo": "incentivo",
+    "texto": "Um dia a menos no check-in não define a sua caminhada. Volte quando puder; a mesa continua aqui.",
+    "verificado": false
+  },
+  {
+    "id": "i22",
+    "tipo": "incentivo",
+    "texto": "Hoje foi o que deu para ser. Agradeça pelo que foi bom e deixe o resto com Deus.",
+    "verificado": false
+  },
+  {
+    "id": "i23",
+    "tipo": "incentivo",
+    "texto": "Quando a rotina aperta, simplifique: uma refeição com calma já é um bom cuidado.",
+    "verificado": false
+  },
+  {
+    "id": "i24",
+    "tipo": "incentivo",
+    "texto": "Seu corpo é um presente. Amanhã você cuida dele de novo, e hoje pode descansar sem cobrança.",
+    "verificado": false
+  },
+  {
+    "id": "g01",
+    "tipo": "gratidao",
+    "texto": "Dia completo! Que gratidão por cada pequeno cuidado de hoje.",
+    "verificado": false
+  },
+  {
+    "id": "g02",
+    "tipo": "gratidao",
+    "texto": "Você cuidou do corpo e do coração hoje. Dê graças a Deus por isso.",
+    "verificado": false
+  },
+  {
+    "id": "g03",
+    "tipo": "gratidao",
+    "texto": "Tudo marcado. Que bom ver sua constância. Siga com gratidão.",
+    "verificado": false
+  },
+  {
+    "id": "g04",
+    "tipo": "gratidao",
+    "texto": "Mais um dia vivido com atenção. Obrigado, Senhor, pelo que foi feito hoje.",
+    "verificado": false
+  },
+  {
+    "id": "g05",
+    "tipo": "gratidao",
+    "texto": "Hoje você honrou o cuidado com o corpo que Deus lhe deu. Descanse com a consciência tranquila.",
+    "verificado": false
+  },
+  {
+    "id": "g06",
+    "tipo": "gratidao",
+    "texto": "Um dia inteiro de cuidado, do prato à oração. Que ele traga paz ao seu descanso.",
+    "verificado": false
+  }
+]
