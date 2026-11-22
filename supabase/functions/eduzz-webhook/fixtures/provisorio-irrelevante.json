@@ -1,0 +1,1 @@
+{ "id": "evt-1003", "event": "myeduzz.cart_abandoned", "sentDate": "2026-11-21T09:00:00Z", "data": { "buyer": { "email": "maria@gmail.com" } } }

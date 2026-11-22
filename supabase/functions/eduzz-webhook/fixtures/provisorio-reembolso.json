@@ -1,0 +1,1 @@
+{ "id": "evt-1002", "event": "myeduzz.invoice_refunded", "sentDate": "2026-11-22T10:00:00Z", "data": { "buyer": { "email": "maria@gmail.com" } } }

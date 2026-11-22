@@ -1,36 +1,15 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { PGlite } from '@electric-sql/pglite';
-import { readFileSync } from 'node:fs';
-
-// Emula o que o Supabase fornece: papéis, auth.jwt() e privilégios padrão.
-const PREAMBULO = `
-  create role anon nologin; create role authenticated nologin; create role service_role nologin bypassrls;
-  create schema auth;
-  create function auth.jwt() returns jsonb language sql stable as $$
-    select coalesce(nullif(current_setting('request.jwt.claims', true), '')::jsonb, '{}'::jsonb) $$;
-  grant usage on schema public, auth to anon, authenticated, service_role;
-  grant execute on function auth.jwt() to anon, authenticated, service_role;
-  alter default privileges in schema public grant all on tables to anon, authenticated, service_role;
-  alter default privileges in schema public grant execute on functions to anon, authenticated, service_role;
-`;
+import { novoBanco, como as comoAluno } from './helpers/pg';
 
 let db: PGlite;
 
 beforeEach(async () => {
-  db = new PGlite();
-  await db.exec(PREAMBULO);
-  await db.exec(readFileSync('supabase/migrations/001_init.sql', 'utf8'));
+  db = await novoBanco();
   await db.exec(`select liberar_aluno('a@x.com'); select liberar_aluno('b@x.com'); select liberar_aluno('c@x.com'); select bloquear_aluno('c@x.com');`);
 });
 
-async function como<T>(email: string, sql: string): Promise<T[]> {
-  await db.exec(`select set_config('request.jwt.claims', '{"email":"${email}"}', false); set role authenticated;`);
-  try {
-    return (await db.query<T>(sql)).rows;
-  } finally {
-    await db.exec(`reset role;`);
-  }
-}
+const como = <T>(email: string, sql: string) => comoAluno<T>(db, email, sql);
 
 const checkin = (email: string, dia = '2026-11-21') =>
   `insert into checkins (email, dia, agua, deus) values ('${email}', '${dia}', true, true)`;
