@@ -26,6 +26,10 @@ body {
   line-height: 1.5;
 }
 h1, h2, h3 { color: var(--verde-escuro); margin: 0 0 .5rem; }
+h1 { font-size: 1.1rem; }
+.topo { position: sticky; top: 0; z-index: 5; margin: -1rem -1rem .5rem; padding: .55rem 1rem; text-align: center; background: var(--fundo); border-bottom: 1px solid var(--verde-medio); }
+.marca { font-size: 1.5rem; letter-spacing: .12em; color: var(--verde-escuro); font-weight: 400; }
+.marca strong { font-weight: 800; }
 strong, b { font-weight: 700; }
 .cartao {
   background: var(--branco);

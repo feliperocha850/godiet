@@ -8,6 +8,7 @@ import { ICONES_MENU } from './views/icones-menu';
 import { renderCalculadora } from './views/calculadora';
 import { renderAulas } from './views/aulas';
 import { renderPrivacidade } from './views/privacidade';
+import { topoHtml } from './views/util';
 
 export interface DepsApp {
   /** Contexto pronto (testes) ou, em produção, `recarregar`: monta o contexto da conta logada depois do login. */
@@ -45,6 +46,7 @@ export async function montar(raiz: HTMLElement, deps: DepsApp): Promise<void> {
   const ctx = (await deps.recarregar?.()) ?? deps.ctx;
   if (!ctx) throw new Error('contexto ausente');
   raiz.innerHTML = `
+    ${topoHtml()}
     <main id="conteudo"></main>
     <nav class="inferior">
       <a href="#/">${ICONES_MENU.hoje}<span>Hoje</span></a><a href="#/cardapio">${ICONES_MENU.cardapio}<span>Cardápio</span></a><a href="#/compras">${ICONES_MENU.compras}<span>Compras</span></a><a href="#/checkin">${ICONES_MENU.checkin}<span>Check-in</span></a><a href="#/aulas">${ICONES_MENU.aulas}<span>Aulas</span></a><button type="button" class="sair" data-acao="sair">${ICONES_MENU.sair}<span>Sair</span></button>

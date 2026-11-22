@@ -1,3 +1,4 @@
+import { topoHtml } from './util';
 export interface AuthLogin {
   pedirCodigo(email: string): Promise<{ ok: true } | { ok: false; motivo: 'nao-encontrado' | 'erro' }>;
   confirmarCodigo(email: string, codigo: string): Promise<boolean>;
@@ -12,6 +13,7 @@ const MSG = {
 export function renderLogin(el: HTMLElement, auth: AuthLogin, aoEntrar: () => void): void {
   const telaEmail = (aviso = '') => {
     el.innerHTML = `
+      ${topoHtml()}
       <div class="cartao">
         <h1>Bem-vindo(a)</h1>
         <p>Digite o <strong>e-mail da compra</strong> do curso. Vamos enviar um código para você entrar.</p>
@@ -30,6 +32,7 @@ export function renderLogin(el: HTMLElement, auth: AuthLogin, aoEntrar: () => vo
 
   const telaCodigo = (email: string, aviso = '') => {
     el.innerHTML = `
+      ${topoHtml()}
       <div class="cartao">
         <h1>Confira seu e-mail</h1>
         <p>Enviamos um código para <strong>${email.replace(/[<>&"]/g, '')}</strong>. Digite abaixo.</p>

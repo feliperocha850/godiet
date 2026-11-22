@@ -7,8 +7,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       manifest: {
-        name: 'Mesa com Propósito',
-        short_name: 'Mesa',
+        name: 'GODIET',
+        short_name: 'GODIET',
         lang: 'pt-BR',
         start_url: './',
         display: 'standalone',

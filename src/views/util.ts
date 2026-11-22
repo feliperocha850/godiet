@@ -18,4 +18,8 @@ export function htmlMensagem(m: Mensagem, testid = 'texto-refeicao'): string {
   return `<blockquote data-testid="${testid}" data-tipo="${m.tipo}">${corpo}${ref}</blockquote>${credito}`;
 }
 
+/** Nome do app: GOD (Deus) em negrito + IET (de "diet") normal. */
+export const marcaHtml = () => '<span class="marca" aria-label="GODIET"><strong>GOD</strong>IET</span>';
+export const topoHtml = () => `<header class="topo">${marcaHtml()}</header>`;
+
 export const kcalTexto = (k: number) => `${k.toLocaleString('pt-BR')} kcal`;

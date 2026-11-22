@@ -1,4 +1,4 @@
-# Mesa com Propósito (app do curso "Códigos do Emagrecimento e Saúde")
+# GODIET (app do curso "Códigos do Emagrecimento e Saúde")
 
 PWA para os alunos: 12 cardápios, lista de compras, versículo/oração antes das refeições e check-in diário.
 

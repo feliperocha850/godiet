@@ -21,7 +21,7 @@ Estado em 2026-11-21: o núcleo do app está construído e testado. Falta tudo o
 - [ ] Versículos: preencher o campo `texto` com o texto oficial da NAA, a partir de fonte licenciada, e confirmar com a SBB o uso de trechos no app. Até lá a tela mostra o tema do versículo.
 - [ ] Conferir por amostragem os cardápios (`docs/conferencia-cardapios.md`).
 - [ ] Texto de privacidade (`src/views/privacidade.ts`) é rascunho: revisar juridicamente.
-- [ ] Nome definitivo e logo (hoje: "Mesa com Propósito", ícones provisórios em `public/`).
+- [ ] Nome: GODIET (decidido). Conferir o ícone final em `public/` e o texto do rodapé/privacidade com o novo nome.
 
 ## 4. Testes em aparelhos
 - [ ] iPhone (Safari → Compartilhar → Adicionar à Tela de Início) e Android (Chrome → Instalar app): login, os 12 cardápios, lista de compras, check-in com e sem internet, virada do dia.
