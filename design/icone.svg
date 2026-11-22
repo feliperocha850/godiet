@@ -17,8 +17,9 @@
   <rect width="512" height="512" fill="url(#fundo)"/>
   <circle cx="256" cy="210" r="210" fill="url(#brilho)"/>
 
+  <g transform="translate(256 256) scale(1.2) translate(-256 -368)">
   <!-- Bíblia aberta: uma página de cada lado -->
-  <g filter="url(#sombra)">
+  <g transform="translate(-38 -92) scale(1.15) translate(0 0)"><g filter="url(#sombra)">
     <path d="M116 318a14 14 0 0 1 14-14h252a14 14 0 0 1 14 14v124a14 14 0 0 1-14 14H130a14 14 0 0 1-14-14z" fill="url(#capa)"/>
     <path d="M256 318C222 304 172 304 132 316V442C172 430 222 430 256 446Z" fill="url(#paginas)"/>
     <path d="M256 318C290 304 340 304 380 316V442C340 430 290 430 256 446Z" fill="url(#paginasD)"/>
@@ -32,45 +33,13 @@
     <path d="M262 440v32l9-8 9 8v-35z" fill="#d9a21b" stroke="#8a5f0b" stroke-width="2"/>
   </g>
 
-  <!-- Mãos em oração (vista de três quartos, inclinadas) -->
-  <g filter="url(#sombra)" transform="translate(8 -26) rotate(-22 256 330)">
-    <!-- polegar da mão de trás -->
-    <rect x="292" y="150" width="22" height="70" rx="11" transform="rotate(10 303 185)" fill="url(#peleD)" stroke="#9a5b2d" stroke-opacity=".5" stroke-width="2.5"/>
-    <rect x="297" y="154" width="11" height="18" rx="5.5" transform="rotate(10 303 185)" fill="#ffe9d4" stroke="#b97a4a" stroke-opacity=".5" stroke-width="2"/>
-    <!-- costas da mão de trás -->
-    <path d="M258 340C304 340 336 306 332 252C330 222 318 196 296 176L264 120L252 200Z" fill="url(#peleD)" stroke="#9a5b2d" stroke-opacity=".5" stroke-width="2.5" stroke-linejoin="round"/>
-    <g fill="none" stroke="#a8683a" stroke-opacity=".5" stroke-width="3" stroke-linecap="round">
-      <path d="M288 196C300 230 306 270 300 312"/><path d="M272 206C282 240 286 276 282 316"/><path d="M306 214C316 240 318 270 312 300"/>
-    </g>
-    <!-- mão da frente: dedos -->
-    <g fill="url(#pele)" stroke="#9a5b2d" stroke-opacity=".55" stroke-width="2.5">
-      <rect x="210" y="184" width="21" height="128" rx="10.5" transform="rotate(-2 220 246)"/>
-      <rect x="224" y="152" width="22" height="160" rx="11"/>
-      <rect x="238" y="128" width="22" height="184" rx="11"/>
-      <rect x="252" y="114" width="22" height="196" rx="11" transform="rotate(1.5 263 210)"/>
-      <rect x="208" y="254" width="78" height="84" rx="22"/>
-    </g>
-    <!-- unhas -->
-    <g fill="#ffe9d4" stroke="#b97a4a" stroke-opacity=".5" stroke-width="2">
-      <rect x="214" y="188" width="12" height="20" rx="6"/><rect x="229" y="156" width="13" height="22" rx="6.5"/>
-      <rect x="243" y="132" width="13" height="22" rx="6.5"/><rect x="257" y="118" width="13" height="22" rx="6.5" transform="rotate(1.5 263 129)"/>
-    </g>
-    <!-- dobras dos dedos -->
-    <g fill="none" stroke="#a8683a" stroke-opacity=".5" stroke-width="2.5" stroke-linecap="round">
-      <path d="M214 238h12M229 220h13M243 202h13M257 190h13"/><path d="M212 270h12M231 262h13M249 256h13"/>
-    </g>
-    <!-- polegar da frente, pela lateral -->
-    <path d="M204 268c-12-8-22 2-20 18l8 42c2 10 12 12 22 8l10-4v-52c-6-8-14-12-20-12z" fill="url(#pele)" stroke="#9a5b2d" stroke-opacity=".55" stroke-width="2.5"/>
-    <!-- manga -->
-    <path d="M222 338C256 332 300 326 338 336L352 396C312 392 276 380 246 360C232 352 224 346 222 338Z" fill="#ffffff" stroke="#c9d8d2" stroke-width="3"/>
-    <path d="M248 348C276 358 308 366 340 376M262 338C288 342 316 346 336 352" fill="none" stroke="#b9cbc4" stroke-width="3" stroke-linecap="round"/>
   </g>
-
   <!-- Fruta -->
-  <g filter="url(#sombra)">
+  <g transform="translate(40 -50) scale(1.15)"><g filter="url(#sombra)">
     <path d="M118 354c-30-22-70-4-66 44 4 44 30 66 56 60 10-3 16-3 26 0 28 6 54-18 56-60 2-48-38-66-72-44z" fill="url(#maca)"/>
     <path d="M122 356c0-16 4-30 12-42" fill="none" stroke="#6d3a1d" stroke-width="8" stroke-linecap="round"/>
     <path d="M134 326c12-22 42-24 52-12-8 22-34 28-52 12z" fill="url(#folha)"/>
     <ellipse cx="86" cy="392" rx="9" ry="20" fill="#ffffff" fill-opacity=".5" transform="rotate(14 86 392)"/>
-  </g>
+  </g></g>
+</g>
 </svg>
