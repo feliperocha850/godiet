@@ -7,6 +7,8 @@
     <linearGradient id="capa" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f7a57"/><stop offset="1" stop-color="#17402a"/></linearGradient>
     <linearGradient id="lombada" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0f2f1e"/><stop offset="1" stop-color="#2c6a47"/></linearGradient>
     <linearGradient id="paginas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#e3d6b8"/></linearGradient>
+    <linearGradient id="paginasD" x1="1" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fffaf0"/><stop offset="1" stop-color="#e3d6b8"/></linearGradient>
+    <linearGradient id="vinco" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a7a52" stop-opacity="0"/><stop offset=".5" stop-color="#8a7a52" stop-opacity=".45"/><stop offset="1" stop-color="#8a7a52" stop-opacity="0"/></linearGradient>
     <linearGradient id="ouro" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0a8"/><stop offset="1" stop-color="#d9a21b"/></linearGradient>
     <radialGradient id="maca" cx=".35" cy=".3" r=".85"><stop offset="0" stop-color="#ff9a90"/><stop offset=".55" stop-color="#e0342e"/><stop offset="1" stop-color="#a51616"/></radialGradient>
     <radialGradient id="folha" cx=".3" cy=".3" r=".9"><stop offset="0" stop-color="#b6ee9a"/><stop offset="1" stop-color="#2e8b4f"/></radialGradient>
@@ -15,32 +17,52 @@
   <rect width="512" height="512" fill="url(#fundo)"/>
   <circle cx="256" cy="210" r="210" fill="url(#brilho)"/>
 
-  <!-- Bíblia -->
+  <!-- Bíblia aberta: uma página de cada lado -->
   <g filter="url(#sombra)">
-    <path d="M132 318h248v118a10 10 0 0 1-10 10H142a10 10 0 0 1-10-10z" fill="url(#paginas)"/>
-    <path d="M144 304h224a12 12 0 0 1 12 12v116a12 12 0 0 1-12 12H144a12 12 0 0 1-12-12V316a12 12 0 0 1 12-12z" fill="url(#capa)"/>
-    <path d="M132 316a12 12 0 0 1 12-12h22v140h-22a12 12 0 0 1-12-12z" fill="url(#lombada)"/>
-    <path d="M166 304v140" stroke="#0b2417" stroke-opacity=".35" stroke-width="3"/>
-    <path d="M142 454h230" stroke="#c9b98f" stroke-width="3"/>
-    <path d="M286 330v82M258 358h56" stroke="url(#ouro)" stroke-width="16" stroke-linecap="round"/>
-    <path d="M178 312h192" stroke="#ffffff" stroke-opacity=".25" stroke-width="3"/>
+    <path d="M116 318a14 14 0 0 1 14-14h252a14 14 0 0 1 14 14v124a14 14 0 0 1-14 14H130a14 14 0 0 1-14-14z" fill="url(#capa)"/>
+    <path d="M256 318C222 304 172 304 132 316V442C172 430 222 430 256 446Z" fill="url(#paginas)"/>
+    <path d="M256 318C290 304 340 304 380 316V442C340 430 290 430 256 446Z" fill="url(#paginasD)"/>
+    <path d="M132 442C172 430 222 430 256 446C290 430 340 430 380 442" fill="none" stroke="#c9b98f" stroke-width="4"/>
+    <rect x="236" y="316" width="40" height="130" fill="url(#vinco)"/>
+    <path d="M256 318V446" stroke="#8a7a52" stroke-opacity=".7" stroke-width="3"/>
+    <g fill="none" stroke="#7d6f4a" stroke-opacity=".35" stroke-width="3" stroke-linecap="round">
+      <path d="M150 340C180 333 210 333 232 340M150 358C180 351 210 351 232 358M150 376C180 369 210 369 232 376M150 394C180 387 210 387 232 394M150 412C180 405 210 405 232 412"/>
+      <path d="M280 340C302 333 332 333 362 340M280 358C302 351 332 351 362 358M280 376C302 369 332 369 362 376M280 394C302 387 332 387 362 394M280 412C302 405 332 405 362 412"/>
+    </g>
+    <path d="M262 440v32l9-8 9 8v-35z" fill="#d9a21b" stroke="#8a5f0b" stroke-width="2"/>
   </g>
 
   <!-- Mãos em oração -->
-  <g filter="url(#sombra)" transform="translate(0 -34)">
-    <path d="M256 330C226 332 204 308 206 268L208 214C210 184 232 160 256 104Z" fill="url(#pele)"/>
-    <path d="M256 330C286 332 308 308 306 268L304 214C302 184 280 160 256 104Z" fill="url(#peleD)"/>
-    <path d="M256 108V318" stroke="#8f5428" stroke-opacity=".6" stroke-width="3"/>
-    <!-- dedos -->
-    <g fill="none" stroke="#a8683a" stroke-opacity=".6" stroke-width="3.2" stroke-linecap="round">
-      <path d="M214 214C228 196 242 170 252 128"/><path d="M212 246C230 222 246 196 253 160"/><path d="M212 276C232 250 248 228 254 196"/>
-      <path d="M298 214C284 196 270 170 260 128"/><path d="M300 246C282 222 266 196 259 160"/><path d="M300 276C280 250 264 228 258 196"/>
+  <g filter="url(#sombra)" transform="rotate(9 256 330) translate(0 -22)">
+    <g>
+      <!-- mão de trás -->
+      <g fill="url(#peleD)" stroke="#9a5b2d" stroke-opacity=".5" stroke-width="2.5">
+        <rect x="232" y="140" width="20" height="150" rx="10"/>
+        <rect x="251" y="128" width="20" height="162" rx="10"/>
+        <rect x="270" y="138" width="20" height="152" rx="10"/>
+        <rect x="289" y="164" width="19" height="126" rx="9.5"/>
+        <rect x="232" y="240" width="76" height="92" rx="20"/>
+      </g>
     </g>
-    <!-- polegares -->
-    <path d="M236 250c-12 0-18 14-14 30l8 34c2 8 12 8 14 0l2-56c0-6-4-8-10-8z" fill="#ffe3c8" stroke="#a8683a" stroke-opacity=".55" stroke-width="3"/>
-    <path d="M276 250c12 0 18 14 14 30l-8 34c-2 8-12 8-14 0l-2-56c0-6 4-8 10-8z" fill="#ffd2ad" stroke="#a8683a" stroke-opacity=".55" stroke-width="3"/>
-    <rect x="212" y="322" width="88" height="30" rx="12" fill="#ffffff"/>
-    <rect x="212" y="322" width="88" height="10" rx="5" fill="#dfeee8"/>
+    <g>
+      <!-- mão da frente -->
+      <g fill="url(#pele)" stroke="#9a5b2d" stroke-opacity=".55" stroke-width="2.5">
+        <rect x="204" y="152" width="20" height="150" rx="10"/>
+        <rect x="223" y="138" width="21" height="164" rx="10.5"/>
+        <rect x="243" y="150" width="20" height="152" rx="10"/>
+        <rect x="262" y="178" width="19" height="124" rx="9.5"/>
+        <rect x="204" y="250" width="77" height="86" rx="20"/>
+      </g>
+      <g fill="none" stroke="#a8683a" stroke-opacity=".45" stroke-width="2.5" stroke-linecap="round">
+        <path d="M212 214h10M231 206h11M251 214h10M269 226h9"/>
+        <path d="M212 262h10M231 256h11M251 262h10"/>
+      </g>
+      <!-- polegar -->
+      <path d="M276 232c14-6 28 4 28 20v48c0 12-8 20-18 20h-8c-8 0-10-8-10-16v-58c0-6 2-12 8-14z" fill="url(#pele)" stroke="#9a5b2d" stroke-opacity=".55" stroke-width="2.5"/>
+      <rect x="283" y="238" width="14" height="22" rx="7" fill="#ffe9d4" stroke="#b97a4a" stroke-opacity=".5" stroke-width="2"/>
+    </g>
+    <path d="M200 322c0-10 6-14 14-14h86c8 0 14 4 14 14v30H200z" fill="#ffffff"/>
+    <rect x="200" y="322" width="114" height="10" fill="#dfeee8"/>
   </g>
 
   <!-- Fruta -->
