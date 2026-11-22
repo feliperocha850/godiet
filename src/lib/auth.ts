@@ -8,7 +8,9 @@ export interface ClienteAuth {
     signInWithOtp(args: { email: string; options: { shouldCreateUser: boolean } }): Promise<{ error: Erro }>;
     verifyOtp(args: { email: string; token: string; type: 'email' }): Promise<{ error: Erro; data: { session: unknown | null } | null }>;
     getSession(): Promise<{ data: { session: unknown | null } }>;
+    signOut(): Promise<{ error: Erro }>;
   };
+  rpc(nome: string): PromiseLike<{ data: unknown; error: Erro }>;
 }
 
 const padrao = () => getClient() as unknown as ClienteAuth;
@@ -36,7 +38,53 @@ export async function confirmarCodigo(email: string, codigo: string, c: ClienteA
   }
 }
 
-export async function sessaoAtiva(c: ClienteAuth = padrao()): Promise<boolean> {
-  const { data } = await c.auth.getSession();
-  return !!data.session;
+export type EstadoAcesso = 'ativo' | 'sem-sessao' | 'bloqueado';
+
+export interface AmbienteAcesso {
+  online(): boolean;
+  /** Existe uma sessão guardada no aparelho (mesmo que o token já tenha vencido)? */
+  sessaoGuardada(): boolean;
+}
+
+const ambientePadrao: AmbienteAcesso = {
+  online: () => typeof navigator === 'undefined' || navigator.onLine,
+  sessaoGuardada: () => {
+    try {
+      return Object.keys(localStorage).some((k) => /^sb-.*-auth-token$/.test(k));
+    } catch {
+      return false;
+    }
+  },
+};
+
+/** Sessão local + confirmação no servidor de que a compra continua valendo. */
+export async function estadoAcesso(c: ClienteAuth = padrao(), amb: AmbienteAcesso = ambientePadrao): Promise<EstadoAcesso> {
+  let tem = false;
+  try {
+    tem = !!(await c.auth.getSession()).data.session;
+  } catch {
+    tem = false;
+  }
+  if (!tem) {
+    // Sem internet o token vencido não pode ser renovado: o aluno ainda abre o app e marca o dia (vai para a fila).
+    return !amb.online() && amb.sessaoGuardada() ? 'ativo' : 'sem-sessao';
+  }
+  let situacao: unknown = null;
+  try {
+    const { data, error } = await c.rpc('meu_acesso');
+    if (!error) situacao = data;
+  } catch {
+    /* sem rede: não expulsa; os dados no servidor continuam protegidos pela RLS */
+  }
+  if (situacao === null || situacao === 'ativo') return 'ativo';
+  await sair(c);
+  return 'bloqueado';
+}
+
+export async function sair(c: ClienteAuth = padrao()): Promise<void> {
+  try {
+    await c.auth.signOut();
+  } catch {
+    /* sem internet: a sessão local some quando o app for reaberto online */
+  }
 }

@@ -16,7 +16,7 @@ export function renderCompras(el: HTMLElement, ctx: Contexto): void {
   const marcados: string[] = JSON.parse(ctx.memoria.get('compras-marcados') ?? '[]');
   const lista = buildShoppingList(c, prefs);
   const hortalicas = [...new Set(c.refeicoes.flatMap((r) => [...(r.hortalicas ?? []), ...(r.salada ?? [])]))];
-  const itensComTroca = new Map(c.refeicoes.flatMap((r) => r.padrao).filter((i) => i.substituicoes.length).map((i) => [i.nome, i]));
+  const comTroca = c.refeicoes.flatMap((r) => r.padrao.filter((i) => i.substituicoes.length).map((i) => ({ r, i, k: `${r.id}:${i.nome}` })));
 
   el.innerHTML = `
     <h1>Lista de compras</h1>
@@ -25,8 +25,8 @@ export function renderCompras(el: HTMLElement, ctx: Contexto): void {
     <details class="cartao"><summary><strong>Ajustar a lista</strong></summary>
       <label><input type="checkbox" data-acao="substitutas" ${prefs.incluirSubstitutas ? 'checked' : ''}> Incluir os ingredientes da refeição substituta (sanduíche)</label>
       <h3>Trocas que eu faço</h3>
-      ${[...itensComTroca.values()].map((i) => `<p><label>${esc(i.nome)}: <select data-item="${esc(i.nome)}">
-        <option value="${esc(i.nome)}">${esc(i.nome)}</option>${i.substituicoes.map((s) => `<option value="${esc(s.nome)}" ${prefs.trocas[i.nome] === s.nome ? 'selected' : ''}>${esc(s.nome)}</option>`).join('')}
+      ${comTroca.map(({ r, i, k }) => `<p><label>${esc(r.nome)} — ${esc(i.nome)}: <select data-item="${esc(k)}" data-original="${esc(i.nome)}">
+        <option value="${esc(i.nome)}">${esc(i.nome)}</option>${i.substituicoes.map((s) => `<option value="${esc(s.nome)}" ${prefs.trocas[k] === s.nome ? 'selected' : ''}>${esc(s.nome)}</option>`).join('')}
       </select></label></p>`).join('')}
       <h3>Vegetais que eu vou usar</h3>
       ${hortalicas.map((h) => `<label><input type="checkbox" data-hort="${esc(h)}" ${prefs.hortalicas.includes(h) ? 'checked' : ''}> ${esc(h)}</label> `).join('')}
@@ -36,7 +36,7 @@ export function renderCompras(el: HTMLElement, ctx: Contexto): void {
   el.querySelectorAll<HTMLSelectElement>('select[data-item]').forEach((s) =>
     s.addEventListener('change', () => {
       const trocas = { ...prefs.trocas };
-      if (s.value === s.dataset.item) delete trocas[s.dataset.item!];
+      if (s.value === s.dataset.original) delete trocas[s.dataset.item!];
       else trocas[s.dataset.item!] = s.value;
       salvarEVoltar({ ...prefs, trocas });
     }),

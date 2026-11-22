@@ -1,0 +1,3 @@
+# O aviso da Eduzz não envia JWT do Supabase: a função se protege pelo token na URL (EDUZZ_WEBHOOK_TOKEN).
+[functions.eduzz-webhook]
+verify_jwt = false

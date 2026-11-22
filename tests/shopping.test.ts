@@ -25,18 +25,30 @@ describe('buildShoppingList', () => {
   });
 
   it('a troca escolhida entra e o item original sai', () => {
-    const itens = todos(buildShoppingList(carregar(1100), { trocas: { 'Frango, peito': 'Peixe' }, hortalicas: [] }));
+    const itens = todos(buildShoppingList(carregar(1100), { trocas: { 'almoco:Frango, peito': 'Peixe', 'jantar:Frango, peito': 'Peixe' }, hortalicas: [] }));
     expect(itens).toContain('Peixe');
     expect(itens).not.toContain('Frango, peito');
   });
 
   it('combinação "A + B" vira dois itens e não repete o que já existe', () => {
     const itens = todos(
-      buildShoppingList(carregar(1400), { trocas: { 'Ovo de galinha': 'Ovo de galinha + Queijo muçarela' }, hortalicas: [] }),
+      buildShoppingList(carregar(1400), { trocas: { 'cafe-da-manha:Ovo de galinha': 'Ovo de galinha + Queijo muçarela' }, hortalicas: [] }),
     );
     expect(itens.filter((i) => i === 'Ovo de galinha')).toHaveLength(1);
     expect(itens).toContain('Queijo muçarela');
     expect(itens.some((i) => i.includes('+'))).toBe(false);
+  });
+
+  it('a troca vale só para a refeição escolhida (o mesmo alimento em outra refeição continua na lista)', () => {
+    const soAlmoco = todos(buildShoppingList(carregar(1100), { trocas: { 'almoco:Frango, peito': 'Peixe' }, hortalicas: [] }));
+    expect(soAlmoco).toContain('Peixe');
+    expect(soAlmoco).toContain('Frango, peito'); // o jantar continua com frango
+  });
+
+  it('2000 kcal: trocar o amendoim do lanche da tarde não tira o do lanche da manhã', () => {
+    const itens = todos(buildShoppingList(carregar(2000), { trocas: { 'lanche-da-tarde:Amendoim moído': 'Abacate' }, hortalicas: [] }));
+    expect(itens).toContain('Abacate');
+    expect(itens).toContain('Amendoim moído');
   });
 
   it('hortaliças marcadas entram no grupo vegetal', () => {

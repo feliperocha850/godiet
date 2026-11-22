@@ -1,7 +1,7 @@
 import type { Cardapio, Grupo, Item } from './types';
 
 export type EscolhasCompras = {
-  /** nome do item padrão -> nome da substituição escolhida */
+  /** `${id da refeição}:${nome do item}` -> nome da substituição escolhida (cada refeição troca separadamente) */
   trocas: Record<string, string>;
   hortalicas: string[];
   incluirSubstitutas?: boolean;
@@ -25,15 +25,15 @@ export function buildShoppingList(c: Cardapio, escolhas: EscolhasCompras): Grupo
     porGrupo.set(grupo, [...(porGrupo.get(grupo) ?? []), nome.trim()]);
   };
 
-  const usar = (item: Item) => {
-    const troca = escolhas.trocas[item.nome];
+  const usar = (item: Item, refeicaoId: string) => {
+    const troca = escolhas.trocas[`${refeicaoId}:${item.nome}`];
     const nomes = (troca ?? item.nome).split(' + ');
     for (const n of nomes) adicionar(n, item.grupo);
   };
 
   for (const r of c.refeicoes) {
-    r.padrao.forEach(usar);
-    if (escolhas.incluirSubstitutas) r.substituta?.itens.forEach(usar);
+    r.padrao.forEach((i) => usar(i, r.id));
+    if (escolhas.incluirSubstitutas) r.substituta?.itens.forEach((i) => usar(i, r.id));
   }
   for (const h of escolhas.hortalicas) adicionar(h, 'vegetal');
 

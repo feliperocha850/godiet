@@ -9,6 +9,8 @@ export type EventoAcesso = { eventId: string; email: string; status: StatusAcess
 export type Resultado = 'aplicado' | 'duplicado' | 'antigo';
 
 export interface Portas {
+  /** Guarda o payload exatamente como chegou, antes de qualquer interpretação. */
+  registrarBruto(payload: unknown): Promise<void>;
   aplicarEvento(ev: EventoAcesso, payload: unknown): Promise<{ resultado: Resultado; statusFinal: StatusAcesso }>;
   garantirUsuario(email: string): Promise<void>;
   encerrarSessoes(email: string): Promise<void>;
@@ -48,6 +50,12 @@ export async function tratarRequisicao(req: Request, segredo: string, portas: Po
     corpo = await req.json();
   } catch {
     return resposta(400, { erro: 'corpo inválido' });
+  }
+
+  try {
+    await portas.registrarBruto(corpo);
+  } catch {
+    return resposta(500, { erro: 'falha ao registrar; tente novamente' });
   }
 
   const ev = parseEduzzEvent(corpo);

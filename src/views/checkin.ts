@@ -29,7 +29,10 @@ export function renderCheckin(el: HTMLElement, ctx: Contexto): void {
     b.addEventListener('change', async () => {
       atual = { ...atual, [b.name]: b.checked };
       const r = await ctx.checkins.salvar(atual);
-      status.textContent = r === 'salvo' ? 'Salvo.' : 'Guardado no aparelho. Vamos sincronizar quando a internet voltar.';
+      status.textContent =
+        r === 'salvo' ? 'Salvo.'
+        : r === 'recusado' ? 'Seu acesso não está ativo, por isso não conseguimos salvar. Saia e entre de novo com o e-mail da compra.'
+        : 'Guardado no aparelho. Vamos sincronizar quando a internet voltar.';
     }),
   );
   el.querySelector('[data-acao=concluir]')!.addEventListener('click', () => {

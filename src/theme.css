@@ -44,6 +44,7 @@ nav.inferior {
   background: var(--branco); border-top: 1px solid var(--verde-medio);
   padding: .5rem;
 }
+nav.inferior .sair { background: none; border: 0; font: inherit; color: var(--verde-escuro); font-weight: 700; padding: .4rem .35rem; cursor: pointer; }
 nav.inferior a { color: var(--verde-escuro); text-decoration: none; font-weight: 700; padding: .4rem .6rem; }
 blockquote { margin: .5rem 0; padding: .6rem .9rem; border-left: 4px solid var(--destaque); background: var(--verde-claro); border-radius: 8px; }
 blockquote cite { font-weight: 700; font-style: normal; }

@@ -3,15 +3,16 @@
 Estado em 2026-11-21: o núcleo do app está construído e testado. Falta tudo o que depende de contas e decisões do Felipe.
 
 ## 1. Contas e configuração (Felipe)
-- [ ] Projeto no Supabase; aplicar `supabase/migrations/001`, `002`, `003` (SQL Editor, na ordem). Conferir as regras de acesso com um aluno ativo e um bloqueado.
-- [ ] Autenticação do Supabase: e-mail por código, texto do e-mail em português, **serviço de envio próprio** (o padrão tem limite baixo), "Confirm email" ligado.
+- [ ] Projeto no Supabase; aplicar `supabase/migrations/001` a `004` (SQL Editor, na ordem). Conferir as regras de acesso com um aluno ativo e um bloqueado.
+- [ ] Autenticação do Supabase: **desligar "Allow new users to sign up"** (só a compra cria usuário, pelo webhook); e-mail por código, texto do e-mail em português, **serviço de envio próprio** (o padrão tem limite baixo), "Confirm email" ligado.
 - [ ] Repositório no GitHub com Pages ativado; segredos `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, `VITE_AULAS_URL` (link da área do aluno na Eduzz).
-- [ ] Publicar a função `eduzz-webhook` (Edge Function) com o segredo `EDUZZ_WEBHOOK_TOKEN` (texto longo e aleatório).
+- [ ] Publicar a função `eduzz-webhook` (Edge Function) com o segredo `EDUZZ_WEBHOOK_TOKEN` (texto longo e aleatório). `supabase/config.toml` já desliga a verificação de JWT dessa função (a Eduzz não envia); se publicar pelo painel, use "Verify JWT" desligado.
+- [ ] No Supabase real, conferir: RLS com aluno ativo/bloqueado, `encerrar_sessoes` (apagar em `auth.sessions` e marcar `banned_until`), `meu_acesso()` e a corrida de eventos simultâneos (PGlite não reproduz).
 
 ## 2. Eduzz (com o Felipe, no navegador do app)
 - [ ] Confirmar se a conta tem webhooks liberados (pode exigir pedido ao suporte da Eduzz).
 - [ ] Ler os eventos de fatura e anotar: nome dos eventos (pago, reembolso, cancelamento, contestação), campo do e-mail do comprador, identificador e data do evento.
-- [ ] Capturar um payload real de cada tipo → trocar `supabase/functions/eduzz-webhook/fixtures/provisorio-*.json` por eles e ajustar `parseEduzzEvent` (hoje PROVISÓRIO) até os testes passarem.
+- [ ] Capturar um payload real de cada tipo → trocar `supabase/functions/eduzz-webhook/fixtures/provisorio-*.json` por eles e ajustar `parseEduzzEvent` (hoje PROVISÓRIO) até os testes passarem. Pendências que dependem do formato real: (a) a ordem dos eventos deve usar a data da mudança de status da fatura, não a de envio; (b) filtrar pelo(s) produto(s) do curso (um pagamento/reembolso de outro produto não pode liberar nem bloquear) e guardar o status por fatura. Tudo o que chega fica em `eventos_brutos`: conferir lá se algum evento real foi ignorado.
 - [ ] Criar o webhook (tipo Fatura) apontando para `<url da função>?token=<EDUZZ_WEBHOOK_TOKEN>` — com o OK do Felipe antes de salvar.
 - [ ] Compra de teste (feita pelo Felipe): aluno vira ativo, recebe código e entra; reembolso do teste bloqueia o acesso, mesmo com o app aberto.
 

@@ -75,12 +75,25 @@ describe('Compras', () => {
     const { ctx } = criarCtx({ prefs: { kcal: 1100 } });
     const e = el();
     renderCompras(e, ctx);
-    const sel = e.querySelector('select[data-item="Frango, peito"]') as HTMLSelectElement;
+    for (const k of ['almoco:Frango, peito', 'jantar:Frango, peito']) {
+      const sel = e.querySelector(`select[data-item="${k}"]`) as HTMLSelectElement;
+      sel.value = 'Peixe';
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+      await espera();
+    }
+    expect(e.textContent).toContain('Peixe');
+    expect(e.querySelector('li[data-nome="Frango, peito"]')).toBeNull();
+  });
+  it('a troca de uma refeição não mexe nas outras (o jantar continua com frango)', async () => {
+    const { ctx } = criarCtx({ prefs: { kcal: 1100 } });
+    const e = el();
+    renderCompras(e, ctx);
+    const sel = e.querySelector('select[data-item="almoco:Frango, peito"]') as HTMLSelectElement;
     sel.value = 'Peixe';
     sel.dispatchEvent(new Event('change', { bubbles: true }));
     await espera();
-    expect(e.textContent).toContain('Peixe');
-    expect(e.querySelector('li[data-nome="Frango, peito"]')).toBeNull();
+    expect(e.querySelector('li[data-nome="Peixe"]')).not.toBeNull();
+    expect(e.querySelector('li[data-nome="Frango, peito"]')).not.toBeNull();
   });
   it('sem cardápio → convida a escolher', () => {
     const e = el();
@@ -127,6 +140,18 @@ describe('Check-in', () => {
   });
 });
 
+describe('Check-in com acesso bloqueado', () => {
+  it('avisa que o acesso não está ativo, em vez de dizer que vai sincronizar', async () => {
+    const { ctx } = criarCtx();
+    ctx.checkins.salvar = async () => 'recusado';
+    const e = el();
+    renderCheckin(e, ctx);
+    await marcar(e, 'agua');
+    expect(e.textContent).toContain('acesso não está ativo');
+    expect(e.textContent).not.toContain('sincroniz');
+  });
+});
+
 describe('Aulas e app', () => {
   it('Aulas leva à área do aluno na Eduzz', () => {
     const e = el();
@@ -137,11 +162,30 @@ describe('Aulas e app', () => {
     const { ctx } = criarCtx({ prefs: { kcal: 1100 } });
     const login = { pedirCodigo: async () => ({ ok: true as const }), confirmarCodigo: async () => true };
     const a = el();
-    await montar(a, { ctx, sessaoAtiva: async () => false, login });
+    await montar(a, { ctx, acesso: async () => 'sem-sessao', login });
     expect(a.textContent).toContain('e-mail da compra');
     const b = el();
-    await montar(b, { ctx, sessaoAtiva: async () => true, login });
+    await montar(b, { ctx, acesso: async () => 'ativo', login });
     expect(b.textContent).toContain('Lanche da tarde');
     expect(b.querySelector('nav.inferior')).not.toBeNull();
+  });
+  it('acesso bloqueado mostra aviso, sem cardápios nem menu, e permite entrar com outro e-mail', async () => {
+    const { ctx } = criarCtx({ prefs: { kcal: 1100 } });
+    const login = { pedirCodigo: async () => ({ ok: true as const }), confirmarCodigo: async () => true };
+    const a = el();
+    await montar(a, { ctx, acesso: async () => 'bloqueado', login });
+    expect(a.textContent).toContain('acesso não está ativo');
+    expect(a.textContent).not.toContain('Lanche da tarde');
+    expect(a.querySelector('nav.inferior')).toBeNull();
+  });
+  it('o menu tem o botão Sair', async () => {
+    const { ctx } = criarCtx({ prefs: { kcal: 1100 } });
+    const login = { pedirCodigo: async () => ({ ok: true as const }), confirmarCodigo: async () => true };
+    let saiu = false;
+    const a = el();
+    await montar(a, { ctx, acesso: async () => 'ativo', login, sair: async () => void (saiu = true) });
+    (a.querySelector('[data-acao=sair]') as HTMLElement).click();
+    await new Promise((r) => setTimeout(r, 0));
+    expect(saiu).toBe(true);
   });
 });

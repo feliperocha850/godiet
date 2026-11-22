@@ -18,7 +18,7 @@ export interface Contexto {
   checkins: {
     get(dia: string): CheckIn | null;
     todos(): CheckIn[];
-    salvar(c: CheckIn): Promise<'salvo' | 'pendente'>;
+    salvar(c: CheckIn): Promise<'salvo' | 'pendente' | 'recusado'>;
   };
   memoria: { get(k: string): string | null; set(k: string, v: string): void };
   agora(): Date;

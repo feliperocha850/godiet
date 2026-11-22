@@ -25,12 +25,14 @@ describe('parseEduzzEvent', () => {
 
 function portas(resultado: Resultado, statusFinal: 'ativo' | 'bloqueado') {
   const chamadas: string[] = [];
+  const brutos: unknown[] = [];
   const p: Portas = {
+    registrarBruto: async (b) => void brutos.push(b),
     aplicarEvento: async () => ({ resultado, statusFinal }),
     garantirUsuario: async (e) => void chamadas.push(`criar:${e}`),
     encerrarSessoes: async (e) => void chamadas.push(`encerrar:${e}`),
   };
-  return { p, chamadas };
+  return { p, chamadas, brutos };
 }
 const req = (corpo: unknown, token = 'segredo', metodo = 'POST') =>
   new Request(`https://x.test/eduzz-webhook?token=${token}`, { method: metodo, body: metodo === 'POST' ? JSON.stringify(corpo) : undefined });
@@ -74,12 +76,35 @@ describe('tratarRequisicao', () => {
     expect(chamadas).toEqual([]);
   });
   it('falha na porta → 500 para a Eduzz tentar de novo', async () => {
-    const p: Portas = { aplicarEvento: async () => { throw new Error('banco fora'); }, garantirUsuario: async () => {}, encerrarSessoes: async () => {} };
+    const p: Portas = { registrarBruto: async () => {}, aplicarEvento: async () => { throw new Error('banco fora'); }, garantirUsuario: async () => {}, encerrarSessoes: async () => {} };
+    expect((await tratarRequisicao(req(fx('provisorio-paga')), 'segredo', p)).status).toBe(500);
+  });
+  it('guarda o payload bruto antes de interpretar — inclusive eventos irrelevantes e formatos desconhecidos', async () => {
+    const { p, brutos } = portas('aplicado', 'ativo');
+    await tratarRequisicao(req(fx('provisorio-irrelevante')), 'segredo', p);
+    await tratarRequisicao(req({ formato: 'novo', comprador: 'x' }), 'segredo', p);
+    expect(brutos).toHaveLength(2);
+  });
+  it('não guarda nada se o token está errado', async () => {
+    const { p, brutos } = portas('aplicado', 'ativo');
+    await tratarRequisicao(req(fx('provisorio-paga'), 'errado'), 'segredo', p);
+    expect(brutos).toEqual([]);
+  });
+  it('se não conseguir guardar o bruto → 500 (a Eduzz reenvia; nada se perde em silêncio)', async () => {
+    const { p } = portas('aplicado', 'ativo');
+    p.registrarBruto = async () => { throw new Error('banco fora'); };
     expect((await tratarRequisicao(req(fx('provisorio-paga')), 'segredo', p)).status).toBe(500);
   });
   it('corpo que não é JSON → 400', async () => {
     const { p } = portas('aplicado', 'ativo');
     const r = await tratarRequisicao(new Request('https://x.test/f?token=segredo', { method: 'POST', body: 'não é json' }), 'segredo', p);
     expect(r.status).toBe(400);
+  });
+});
+
+describe('implantação da função', () => {
+  it('config.toml desliga a verificação de JWT (a Eduzz não envia esse cabeçalho)', async () => {
+    const { readFileSync } = await import('node:fs');
+    expect(readFileSync('supabase/config.toml', 'utf8')).toMatch(/\[functions\.eduzz-webhook\][^[]*verify_jwt\s*=\s*false/);
   });
 });
