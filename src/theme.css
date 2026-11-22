@@ -54,3 +54,8 @@ blockquote cite { font-weight: 700; font-style: normal; }
 input[type=email], input[type=text], input[name=codigo], select { width: 100%; padding: .7rem; font-size: 1rem; border: 1px solid var(--verde-medio); border-radius: 10px; margin: .4rem 0; }
 .aviso { color: var(--alerta); font-weight: 700; }
 details summary { cursor: pointer; font-weight: 700; color: var(--verde-escuro); }
+a { color: var(--verde-escuro); font-weight: 700; }
+a.botao { display: inline-block; text-decoration: none; color: var(--branco); }
+a.botao.secundario { color: var(--verde-escuro); }
+nav.inferior a { white-space: nowrap; font-size: .95rem; padding: .4rem .35rem; }
+.faixas .botao { width: 100%; }

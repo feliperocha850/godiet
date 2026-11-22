@@ -309,7 +309,8 @@ def parse_bloco(horario, nome, bloco, avisos, kcal):
             obs = " ".join(l.strip() for l in ls if l.strip())
             ref.setdefault("substituta", {"nome": "", "itens": [], "observacao": ""})["observacao"] = obs
         elif tipo == "obs_linha":
-            ref["observacao"] = ls[0].strip().removeprefix("Obs:").strip()
+            obs = ls[0].strip().removeprefix("Obs:").strip()
+            ref["observacao"] = obs[:1].upper() + obs[1:]
         elif tipo == "marc_subst":
             m = re.search(r"no lugar (d[oa]s? .*)$", header.strip())
             if m:
