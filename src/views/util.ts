@@ -15,7 +15,7 @@ export function sortear(ctx: Contexto, banco: Mensagem[], chave: string): Mensag
 export function htmlMensagem(m: Mensagem, testid = 'texto-refeicao'): string {
   const corpo = esc(m.texto ?? m.tema ?? '');
   const ref = m.referencia ? `<cite> — ${esc(m.referencia)}</cite>` : '';
-  const credito = m.tipo === 'versiculo' && m.texto ? '<small class="credito">Versão NAA · Sociedade Bíblica do Brasil</small>' : '';
+  const credito = m.tipo === 'versiculo' && m.texto ? '<small class="credito">Bíblia Livre (BLIVRE), 2018 · © Diego Santos, Mario Sérgio e Marco Teles · CC BY 4.0</small>' : '';
   return `<blockquote data-testid="${testid}" data-tipo="${m.tipo}">${corpo}${ref}</blockquote>${credito}`;
 }
 

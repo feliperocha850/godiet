@@ -28,10 +28,10 @@ export type Cardapio = { kcal: number; refeicoes: Refeicao[] };
 export type Mensagem = {
   id: string;
   tipo: 'versiculo' | 'oracao' | 'incentivo' | 'gratidao' | 'reflexao';
-  /** Texto exibido. Nos versículos, deve ser o texto oficial da NAA (a preencher a partir de fonte licenciada). */
+  /** Texto exibido. Nos versículos, é o texto da Bíblia Livre (BLIVRE, 2018, CC BY 4.0), sempre com o crédito exibido. */
   texto?: string;
   referencia?: string;
-  /** Resumo do tema em palavras nossas; aparece enquanto o texto da NAA não estiver preenchido. */
+  /** Resumo do tema em palavras nossas; aparece quando o versículo não tem texto. */
   tema?: string;
   /** true só depois da revisão do Felipe (e, nos versículos, da conferência no texto oficial). */
   verificado: boolean;

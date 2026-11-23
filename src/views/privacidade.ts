@@ -7,6 +7,7 @@ export function renderPrivacidade(el: HTMLElement): void {
       as trocas da lista de compras e seus check-ins diários (alimentação, água, movimento, sono e momento com Deus) e as anotações que você escrever neles.</p>
       <p>Esses dados servem só para o funcionamento do app e não são vendidos nem compartilhados para publicidade.</p>
       <p>O app não substitui o acompanhamento de um profissional de saúde. Em caso de dúvida sobre sua saúde, procure seu médico ou nutricionista.</p>
+      <p>Textos bíblicos: Bíblia Livre (BLIVRE), 2018, © Diego Santos, Mario Sérgio e Marco Teles, licença Creative Commons Atribuição 4.0 Brasil (creativecommons.org/licenses/by/4.0/br/).</p>
       <p>Para pedir a exclusão dos seus dados, fale com o suporte do curso.</p>
     </div>`;
 }

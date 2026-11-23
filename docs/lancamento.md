@@ -18,7 +18,7 @@ Estado em 2026-11-21: o núcleo do app está construído e testado. Falta tudo o
 
 ## 3. Conteúdo (Felipe)
 - [ ] Revisar `src/data/incentivos.json` e as orações em `src/data/versiculos.json` (marcar `"verificado": true`).
-- [ ] Versículos: preencher o campo `texto` com o texto oficial da NAA, a partir de fonte licenciada, e confirmar com a SBB o uso de trechos no app. Até lá a tela mostra o tema do versículo.
+- [x] Versículos: texto da Bíblia Livre (BLIVRE, 2018, CC BY 4.0), com crédito em cada versículo. A NAA só entra com autorização da SBB (use só o texto autorizado e o crédito que eles pedirem). Conferir uma amostra de versículos contra o site oficial.
 - [ ] Conferir por amostragem os cardápios (`docs/conferencia-cardapios.md`).
 - [ ] Texto de privacidade (`src/views/privacidade.ts`) é rascunho: revisar juridicamente.
 - [ ] Nome: GODIET (decidido). Conferir o ícone final em `public/` e o texto do rodapé/privacidade com o novo nome.

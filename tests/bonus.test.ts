@@ -89,3 +89,29 @@ describe('Aulas e bônus', () => {
     expect(e.querySelector('[role=alert]')?.textContent).toMatch(/não foi possível/i);
   });
 });
+
+import versiculos from '../src/data/versiculos.json';
+import { htmlMensagem } from '../src/views/util';
+import { renderPrivacidade } from '../src/views/privacidade';
+
+describe('Versículos: Bíblia Livre com crédito', () => {
+  const lista = (versiculos as Array<{ tipo: string; referencia?: string; texto?: string }>).filter((m) => m.tipo === 'versiculo');
+  it('todo versículo tem texto e referência', () => {
+    expect(lista.length).toBeGreaterThanOrEqual(30);
+    for (const m of lista) { expect((m.texto ?? '').length).toBeGreaterThan(30); expect(m.referencia).toBeTruthy(); }
+  });
+  it('nenhum texto traz sobras da página de origem', () => {
+    for (const m of lista) expect(m.texto).not.toMatch(/©|<|>|Diego Santos|\d{1,3}\s*$/);
+  });
+  it('o crédito exibido é da Bíblia Livre, nunca da NAA', () => {
+    const html = htmlMensagem({ id: 'x', tipo: 'versiculo', texto: lista[0].texto!, referencia: lista[0].referencia, verificado: false } as never);
+    expect(html).toContain('Bíblia Livre');
+    expect(html).toContain('CC BY 4.0');
+    expect(html).not.toMatch(/NAA|Sociedade Bíblica/);
+  });
+  it('a página de privacidade traz a licença da Bíblia Livre', () => {
+    const e = document.createElement('div'); renderPrivacidade(e);
+    expect(e.textContent).toContain('Bíblia Livre');
+    expect(e.textContent).toContain('Creative Commons');
+  });
+});

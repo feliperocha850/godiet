@@ -5,231 +5,263 @@
     "referencia": "1 Coríntios 10:31",
     "tema": "Fazer tudo, inclusive comer e beber, para a glória de Deus",
     "verificado": false,
-    "texto": "Portanto, quer comais, quer bebais ou façais outra qualquer coisa, fazei tudo para glória de Deus."
+    "texto": "Portanto, ao comer, ou ao beber, ou ao fazer qualquer coisa, fazei tudo para a glória de Deus."
   },
   {
     "id": "v02",
     "tipo": "versiculo",
     "referencia": "1 Coríntios 6:19-20",
     "tema": "O corpo é templo do Espírito Santo",
-    "verificado": false
+    "verificado": false,
+    "texto": "Ou não sabeis que vosso corpo é templo do Espírito Santo, o qual está em vós, o qual tendes de Deus, e que não sois de vós mesmos? Porque vós fostes comprados por alto preço; então glorificai a Deus em vosso corpo, e em vosso espírito, que são de Deus."
   },
   {
     "id": "v03",
     "tipo": "versiculo",
     "referencia": "Romanos 12:1",
     "tema": "Cuidar do corpo é um ato de adoração",
-    "verificado": false
+    "verificado": false,
+    "texto": "Rogo-vos, pois, irmãos, pelas misericórdias de Deus, que apresenteis os vossos corpos como sacrifício vivo, santo e agradável a Deus, que é o vosso culto racional."
   },
   {
     "id": "v04",
     "tipo": "versiculo",
     "referencia": "Gálatas 5:22-23",
     "tema": "Domínio próprio como fruto do Espírito",
-    "verificado": false
+    "verificado": false,
+    "texto": "Mas o fruto do Espírito é: amor, alegria, paz, paciência, benignidade, bondade, fidelidade, mansidão, domínio próprio. Contra essas coisas não há lei."
   },
   {
     "id": "v05",
     "tipo": "versiculo",
     "referencia": "Provérbios 25:16",
     "tema": "Comer o que basta, com moderação",
-    "verificado": false
+    "verificado": false,
+    "texto": "Achaste mel? Come o que te for suficiente; para que não venhas a ficar cheio demais, e vomites."
   },
   {
     "id": "v06",
     "tipo": "versiculo",
     "referencia": "Provérbios 23:20-21",
     "tema": "Cuidado com o excesso à mesa",
-    "verificado": false
+    "verificado": false,
+    "texto": "Não esteja entre os beberrões de vinho, nem entre os comilões de carne. Porque o beberrão e o comilão empobrecerão; e a sonolência os faz vestir trapos."
   },
   {
     "id": "v07",
     "tipo": "versiculo",
     "referencia": "Provérbios 13:25",
     "tema": "O justo come até se satisfazer",
-    "verificado": false
+    "verificado": false,
+    "texto": "O justo come até sua alma estar saciada; mas o ventre dos perversos passará por necessidade."
   },
   {
     "id": "v08",
     "tipo": "versiculo",
     "referencia": "Provérbios 15:17",
     "tema": "Uma refeição simples, com amor, vale mais que fartura com discórdia",
-    "verificado": false
+    "verificado": false,
+    "texto": "Melhor é a comida de hortaliças tendo amor, do que a de boi cevado tendo em si ódio."
   },
   {
     "id": "v09",
     "tipo": "versiculo",
     "referencia": "Provérbios 17:1",
     "tema": "Paz à mesa vale mais que banquete com briga",
-    "verificado": false
+    "verificado": false,
+    "texto": "Melhor é um pedaço seco de comida com tranquilidade, do que uma casa cheia de carne com briga."
   },
   {
     "id": "v10",
     "tipo": "versiculo",
     "referencia": "Eclesiastes 9:7",
     "tema": "Comer o pão com alegria",
-    "verificado": false
+    "verificado": false,
+    "texto": "Vai, come com alegria teu pão, e bebe com bom coração o teu vinho; pois Deus se agrada de tuas obras."
   },
   {
     "id": "v11",
     "tipo": "versiculo",
     "referencia": "Eclesiastes 3:13",
     "tema": "Comer e beber é uma dádiva de Deus",
-    "verificado": false
+    "verificado": false,
+    "texto": "E também que todo homem coma, beba e fique contente com todo o seu trabalho; isto é um presente de Deus."
   },
   {
     "id": "v12",
     "tipo": "versiculo",
     "referencia": "Gênesis 1:29",
     "tema": "Deus nos deu plantas e frutos como alimento",
-    "verificado": false
+    "verificado": false,
+    "texto": "E disse Deus: Eis que vos dei toda erva que dá semente, que está sobre a face de toda a terra; e toda árvore em que há fruto de árvore que dá semente, vos será para comer."
   },
   {
     "id": "v13",
     "tipo": "versiculo",
-    "referencia": "Salmo 104:14-15",
-    "tema": "Deus faz brotar da terra o alimento que sustenta",
-    "verificado": false
+    "referencia": "Salmo 111:5",
+    "tema": "Deus provê o alimento e é fiel",
+    "verificado": false,
+    "texto": "Ele deu alimento aos que o temem; ele se lembrará para sempre de seu pacto."
   },
   {
     "id": "v14",
     "tipo": "versiculo",
     "referencia": "Salmo 34:8",
     "tema": "Provar e ver que o Senhor é bom",
-    "verificado": false
+    "verificado": false,
+    "texto": "Experimentai, e vede que o SENHOR é bom; bem-aventurado é o homem que confia nele."
   },
   {
     "id": "v15",
     "tipo": "versiculo",
     "referencia": "Salmo 136:25",
     "tema": "Deus dá alimento a toda criatura",
-    "verificado": false
+    "verificado": false,
+    "texto": "O que dá alimento a todo ser vivo feito de carne; porque sua bondade dura para sempre."
   },
   {
     "id": "v16",
     "tipo": "versiculo",
     "referencia": "Salmo 145:15-16",
     "tema": "Os olhos de todos esperam no Senhor, que dá o alimento no tempo certo",
-    "verificado": false
+    "verificado": false,
+    "texto": "Os olhos de todos esperam por ti, e tu lhes dás seu alimento ao seu tempo. Tu abres tua mão, e sacias o desejo de todo ser vivo."
   },
   {
     "id": "v17",
     "tipo": "versiculo",
     "referencia": "Mateus 6:11",
     "tema": "O pão de cada dia vem de Deus",
-    "verificado": false
+    "verificado": false,
+    "texto": "O pão nosso de cada dia nos dá hoje."
   },
   {
     "id": "v18",
     "tipo": "versiculo",
     "referencia": "Mateus 6:25",
     "tema": "Não viver ansioso pelo que comer",
-    "verificado": false
+    "verificado": false,
+    "texto": "Por isso vos digo: não andeis ansiosos por vossa vida, sobre o que haveis de comer, ou que haveis de beber; nem por vosso corpo, sobre com que vos haveis de vestir. Não é a vida mais que o alimento, e o corpo mais que a roupa?"
   },
   {
     "id": "v19",
     "tipo": "versiculo",
     "referencia": "Mateus 4:4",
     "tema": "Não só de pão vive o ser humano",
-    "verificado": false
+    "verificado": false,
+    "texto": "Mas Jesus respondeu: Está escrito: Não só de pão viverá o ser humano, mas de toda palavra que sai da boca de Deus."
   },
   {
     "id": "v20",
     "tipo": "versiculo",
     "referencia": "João 6:35",
     "tema": "Jesus, o pão da vida",
-    "verificado": false
+    "verificado": false,
+    "texto": "E Jesus lhes disse: Eu sou o pão da vida; quem vem a mim de maneira nenhuma terá fome, e quem crê em mim nunca terá sede."
   },
   {
     "id": "v21",
     "tipo": "versiculo",
     "referencia": "Filipenses 4:6",
     "tema": "Em vez de ansiedade, oração com gratidão",
-    "verificado": false
+    "verificado": false,
+    "texto": "Não estejais ansiosos por coisa alguma; mas em tudo, por meio de orações e súplicas com ações de gratidão, sejam os vossos pedidos conhecidos por Deus;"
   },
   {
     "id": "v22",
     "tipo": "versiculo",
     "referencia": "1 Tessalonicenses 5:18",
     "tema": "Dar graças em todas as circunstâncias",
-    "verificado": false
+    "verificado": false,
+    "texto": "Agradecei em tudo, pois essa é a vontade de Deus em Cristo Jesus para vós mesmos."
   },
   {
     "id": "v23",
     "tipo": "versiculo",
     "referencia": "1 Timóteo 4:4-5",
     "tema": "O que Deus criou é bom e se santifica com oração",
-    "verificado": false
+    "verificado": false,
+    "texto": "Pois toda criatura de Deus é boa, e não há nada a rejeitar, se for recebida com gratidão. Porque ela é santificada pela palavra de Deus e pela oração."
   },
   {
     "id": "v24",
     "tipo": "versiculo",
     "referencia": "1 Timóteo 4:8",
     "tema": "O exercício físico tem valor, e a piedade vale para tudo",
-    "verificado": false
+    "verificado": false,
+    "texto": "Pois o exercício do corpo tem pouco proveito; mas a devoção divina é proveitosa para tudo, pois tem as promessas da vida atual e da futura."
   },
   {
     "id": "v25",
     "tipo": "versiculo",
     "referencia": "Colossenses 3:17",
     "tema": "Tudo o que fizermos, fazer em nome de Jesus, com gratidão",
-    "verificado": false
+    "verificado": false,
+    "texto": "E tudo quanto fizerdes, por palavras ou por obras, fazei tudo no nome do Senhor Jesus, dando por meio dele graças ao Deus e Pai."
   },
   {
     "id": "v26",
     "tipo": "versiculo",
     "referencia": "Colossenses 3:23",
     "tema": "Fazer tudo de coração, como para o Senhor",
-    "verificado": false
+    "verificado": false,
+    "texto": "E tudo quanto fizerdes, fazei de coração, como para o Senhor, e não para as pessoas."
   },
   {
     "id": "v27",
     "tipo": "versiculo",
     "referencia": "Atos 2:46",
     "tema": "Partir o pão com alegria e singeleza de coração",
-    "verificado": false
+    "verificado": false,
+    "texto": "E perseverando a cada dia em concordância no Templo, e partindo o pão de casa em casa, comiam juntos com alegria e sinceridade de coração."
   },
   {
     "id": "v28",
     "tipo": "versiculo",
     "referencia": "Atos 27:35",
     "tema": "Agradecer a Deus antes de partir o pão",
-    "verificado": false
+    "verificado": false,
+    "texto": "E tendo dito isto, e tomando o pão, ele agradeceu a Deus na presença de todos; e partindo-o, começou a comer."
   },
   {
     "id": "v29",
     "tipo": "versiculo",
     "referencia": "Lucas 9:16",
     "tema": "Jesus tomou os pães e deu graças",
-    "verificado": false
+    "verificado": false,
+    "texto": "Então ele tomou os cinco pães e os dois peixes e, olhando para o céu, abençoou-os e partiu-os, e os deu a seus discípulos, para os porem diante da multidão."
   },
   {
     "id": "v30",
     "tipo": "versiculo",
     "referencia": "Daniel 1:12",
     "tema": "Daniel e a escolha por uma alimentação simples",
-    "verificado": false
+    "verificado": false,
+    "texto": "Faze um teste, eu te peço, com teus servos por dez dias, e dê-nos legumes para comer, e água para beber."
   },
   {
     "id": "v31",
     "tipo": "versiculo",
     "referencia": "Deuteronômio 8:10",
     "tema": "Comer, ficar satisfeito e louvar ao Senhor",
-    "verificado": false
+    "verificado": false,
+    "texto": "E comerás e te fartarás, e bendirás ao SENHOR teu Deus pela boa terra que te haverá dado."
   },
   {
     "id": "v32",
     "tipo": "versiculo",
     "referencia": "Isaías 40:31",
     "tema": "Quem espera no Senhor renova as forças",
-    "verificado": false
+    "verificado": false,
+    "texto": "Mas os que confiam no SENHOR renovarão as forças, subirão com asas como águias; correrão, e não se cansarão; caminharão, e não se fatigarão."
   },
   {
     "id": "v33",
     "tipo": "versiculo",
     "referencia": "Salmo 127:2",
     "tema": "O descanso também é dom de Deus",
-    "verificado": false
+    "verificado": false,
+    "texto": "Inutilmente levantais de madrugada e descansais tarde, para comerdes o pão de dores; porque assim ele dá sono a quem ele ama."
   },
   {
     "id": "o01",
