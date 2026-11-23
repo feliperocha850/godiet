@@ -8,7 +8,7 @@ const fx = (n: string) => JSON.parse(readFileSync(`supabase/functions/eduzz-webh
 describe('parseEduzzEvent', () => {
   it('pago → ativo, com e-mail normalizado', () => {
     expect(parseEduzzEvent(fx('provisorio-paga'))).toEqual({
-      eventId: 'evt-1001', email: 'maria@gmail.com', status: 'ativo', ocorridoEm: '2026-11-21T10:00:00Z',
+      eventId: 'evt-1001', email: 'maria@gmail.com', status: 'ativo', ocorridoEm: '2026-11-21T10:00:00Z', produtoIds: [],
     });
   });
   it('reembolso → bloqueado', () => {
@@ -16,6 +16,15 @@ describe('parseEduzzEvent', () => {
   });
   it('evento que não muda acesso → null', () => {
     expect(parseEduzzEvent(fx('provisorio-irrelevante'))).toBeNull();
+  });
+  it('usa o e-mail do ALUNO (não do comprador) e lista os produtos — formato real da Eduzz', () => {
+    expect(parseEduzzEvent(fx('eduzz-real-paga'))).toEqual({
+      eventId: 'mbpqrsinpk71gmt2ovw1nkd7q', email: 'rick.jones@example.com', status: 'ativo',
+      ocorridoEm: '2026-11-23T13:39:08.645Z', produtoIds: ['P567', 'P789'],
+    });
+  });
+  it('sem aluno no aviso, usa o e-mail do comprador', () => {
+    expect(parseEduzzEvent(fx('eduzz-real-cancelada'))?.email).toBe('alice.johnson@example.com');
   });
   it('lixo → null', () => {
     expect(parseEduzzEvent(null)).toBeNull();
@@ -99,6 +108,27 @@ describe('tratarRequisicao', () => {
     const { p } = portas('aplicado', 'ativo');
     const r = await tratarRequisicao(new Request('https://x.test/f?token=segredo', { method: 'POST', body: 'não é json' }), 'segredo', p);
     expect(r.status).toBe(400);
+  });
+});
+
+describe('filtro por produto do curso', () => {
+  it('produto fora da lista → 200 ignorado, sem nenhum efeito (mas o bruto fica guardado)', async () => {
+    const { p, chamadas, brutos } = portas('aplicado', 'ativo');
+    const r = await tratarRequisicao(req(fx('eduzz-real-paga')), 'segredo', p, ['999']);
+    expect(r.status).toBe(200);
+    expect(await r.json()).toMatchObject({ ignorado: true });
+    expect(chamadas).toEqual([]);
+    expect(brutos).toHaveLength(1);
+  });
+  it('produto da lista → processa e libera o e-mail do aluno', async () => {
+    const { p, chamadas } = portas('aplicado', 'ativo');
+    await tratarRequisicao(req(fx('eduzz-real-paga')), 'segredo', p, ['P789']);
+    expect(chamadas).toEqual(['criar:rick.jones@example.com']);
+  });
+  it('lista vazia → aceita qualquer produto', async () => {
+    const { p, chamadas } = portas('aplicado', 'ativo');
+    await tratarRequisicao(req(fx('eduzz-real-paga')), 'segredo', p, []);
+    expect(chamadas).toEqual(['criar:rick.jones@example.com']);
   });
 });
 

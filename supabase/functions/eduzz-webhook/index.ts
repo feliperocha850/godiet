@@ -30,4 +30,6 @@ const portas: Portas = {
   },
 };
 
-Deno.serve((req) => tratarRequisicao(req, Deno.env.get('EDUZZ_WEBHOOK_TOKEN') ?? '', portas));
+const produtos = (Deno.env.get('EDUZZ_PRODUCT_IDS') ?? '').split(',').map((x) => x.trim()).filter(Boolean);
+
+Deno.serve((req) => tratarRequisicao(req, Deno.env.get('EDUZZ_WEBHOOK_TOKEN') ?? '', portas, produtos));

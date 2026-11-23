@@ -1,0 +1,5 @@
+{ "id": "mbpqrsinpk71gmt2ovw1nkd7q", "event": "myeduzz.invoice_paid", "sentDate": "2026-11-23T13:39:08.645Z",
+  "data": { "id": "12345678", "status": "paid",
+    "buyer": { "id": "66677677767", "name": "Alice Johnson", "email": "alice.johnson@example.com" },
+    "student": { "id": "666733767", "name": "Rick Jones", "email": "Rick.Jones@example.com" },
+    "items": [ { "name": "Widget X", "productId": "P567" }, { "name": "Gadget Y", "productId": "P789" } ] } }

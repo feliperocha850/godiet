@@ -1,0 +1,4 @@
+{ "id": "ts8q6fzjho1reg9l9ymrycj7k", "event": "myeduzz.invoice_canceled", "sentDate": "2026-11-23T13:39:07.367Z",
+  "data": { "id": "12345678", "status": "canceled",
+    "buyer": { "id": "66677677767", "name": "Alice Johnson", "email": "alice.johnson@example.com" },
+    "items": [ { "name": "Widget X", "productId": "P567" } ] } }
