@@ -41,6 +41,14 @@ describe('pedirCodigo', () => {
     const { c } = cliente({ signInWithOtp: async () => { throw new TypeError('network'); } });
     expect(await pedirCodigo('a@x.com', c)).toEqual({ ok: false, motivo: 'erro' });
   });
+  it('limite de envios (429 ou texto de rate limit) → limite, e não "sem internet"', async () => {
+    const por429 = cliente({ signInWithOtp: async () => ({ error: { message: 'x', status: 429 } }) });
+    expect(await pedirCodigo('a@x.com', por429.c)).toEqual({ ok: false, motivo: 'limite' });
+    const porTexto = cliente({ signInWithOtp: async () => ({ error: { message: 'For security purposes, you can only request this after 52 seconds.' } }) });
+    expect(await pedirCodigo('a@x.com', porTexto.c)).toEqual({ ok: false, motivo: 'limite' });
+    const rate = cliente({ signInWithOtp: async () => ({ error: { message: 'email rate limit exceeded' } }) });
+    expect(await pedirCodigo('a@x.com', rate.c)).toEqual({ ok: false, motivo: 'limite' });
+  });
 });
 
 describe('confirmarCodigo', () => {

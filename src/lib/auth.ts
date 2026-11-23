@@ -1,6 +1,6 @@
 import { getClient } from './supabase';
 
-type Erro = { message: string } | null;
+type Erro = { message: string; status?: number } | null;
 
 /** Parte do cliente do Supabase que usamos (facilita testar). */
 export interface ClienteAuth {
@@ -17,13 +17,15 @@ const padrao = () => getClient() as unknown as ClienteAuth;
 
 export const normalizarEmail = (s: string) => s.trim().toLowerCase();
 
-export type ResultadoPedido = { ok: true } | { ok: false; motivo: 'nao-encontrado' | 'erro' };
+export type ResultadoPedido = { ok: true } | { ok: false; motivo: 'nao-encontrado' | 'limite' | 'erro' };
 
 export async function pedirCodigo(email: string, c: ClienteAuth = padrao()): Promise<ResultadoPedido> {
   try {
     const { error } = await c.auth.signInWithOtp({ email: normalizarEmail(email), options: { shouldCreateUser: false } });
     if (!error) return { ok: true };
-    return { ok: false, motivo: /signups? not allowed|user not found/i.test(error.message) ? 'nao-encontrado' : 'erro' };
+    if (/signups? not allowed|user not found/i.test(error.message)) return { ok: false, motivo: 'nao-encontrado' };
+    if (error.status === 429 || /rate limit|too many|only request this after|security purposes/i.test(error.message)) return { ok: false, motivo: 'limite' };
+    return { ok: false, motivo: 'erro' };
   } catch {
     return { ok: false, motivo: 'erro' };
   }

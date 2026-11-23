@@ -34,6 +34,13 @@ describe('tela de login', () => {
     await enviar(el, 'input[name=email]', 'a@x.com');
     expect(el.textContent).toContain('tente de novo');
   });
+  it('limite de envios → pede para esperar alguns minutos, sem culpar a internet', async () => {
+    const { el } = montar({ pedirCodigo: async () => ({ ok: false, motivo: 'limite' }), confirmarCodigo: async () => true });
+    await enviar(el, 'input[name=email]', 'a@x.com');
+    expect(el.textContent).toContain('Muitos pedidos');
+    expect(el.textContent).toContain('minutos');
+    expect(el.textContent).not.toContain('internet');
+  });
   it('código certo → entra; código errado → mensagem e continua na tela', async () => {
     const certo = montar({ pedirCodigo: async () => ({ ok: true }), confirmarCodigo: async () => true });
     await enviar(certo.el, 'input[name=email]', 'a@x.com');

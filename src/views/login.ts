@@ -1,12 +1,13 @@
 import { topoHtml } from './util';
 export interface AuthLogin {
-  pedirCodigo(email: string): Promise<{ ok: true } | { ok: false; motivo: 'nao-encontrado' | 'erro' }>;
+  pedirCodigo(email: string): Promise<{ ok: true } | { ok: false; motivo: 'nao-encontrado' | 'limite' | 'erro' }>;
   confirmarCodigo(email: string, codigo: string): Promise<boolean>;
 }
 
 const MSG = {
   naoEncontrado: 'Não encontramos uma compra com este e-mail. Use o e-mail da compra do curso ou fale com o suporte.',
   erro: 'Não foi possível enviar o código agora. Verifique sua internet e tente de novo.',
+  limite: 'Muitos pedidos de código em pouco tempo. Aguarde alguns minutos e tente de novo (use o código mais recente que chegou no seu e-mail).',
   codigoErrado: 'Código incorreto ou expirado. Confira o e-mail e tente de novo.',
 };
 
@@ -26,7 +27,7 @@ export function renderLogin(el: HTMLElement, auth: AuthLogin, aoEntrar: () => vo
       const email = (el.querySelector('input[name=email]') as HTMLInputElement).value;
       const r = await auth.pedirCodigo(email);
       if (r.ok) telaCodigo(email);
-      else telaEmail(r.motivo === 'nao-encontrado' ? MSG.naoEncontrado : MSG.erro);
+      else telaEmail(r.motivo === 'nao-encontrado' ? MSG.naoEncontrado : r.motivo === 'limite' ? MSG.limite : MSG.erro);
     });
   };
 
