@@ -8,6 +8,7 @@ import { ICONES_MENU } from './views/icones-menu';
 import { renderCalculadora } from './views/calculadora';
 import { renderAulas } from './views/aulas';
 import { renderPrivacidade } from './views/privacidade';
+import { renderAdmin } from './views/admin';
 import { topoHtml } from './views/util';
 
 export interface DepsApp {
@@ -29,6 +30,7 @@ const ROTAS: Record<string, (el: HTMLElement, ctx: Contexto) => void> = {
   '#/aulas': renderAulas,
   '#/calculadora': renderCalculadora,
   '#/privacidade': (el) => renderPrivacidade(el),
+  '#/admin': (el) => renderAdmin(el),
 };
 
 let ouvinte: (() => void) | null = null;
