@@ -36,7 +36,7 @@ Para trocar ou adicionar um PDF:
 - [ ] Revisar uma amostra dos versículos (Bíblia Livre), as mensagens, as orações e as 15 reflexões (`src/data/incentivos.json` e `src/data/versiculos.json`, marcar `"verificado": true`).
 - [ ] Texto de privacidade (`src/views/privacidade.ts`) e crédito da Bíblia Livre no rodapé: revisão jurídica.
 - [ ] Conferir por amostragem os cardápios (`docs/conferencia-cardapios.md`).
-- [ ] Testar no Android (Chrome → Instalar app). O iPhone já foi testado.
+- [x] Android (Chrome → Instalar app) e iPhone testados: instalação e login funcionaram.
 - [ ] Na primeira venda real reembolsada, conferir que o aluno foi bloqueado e desconectado. Esse caminho foi testado pelo painel e pelo banco, mas ainda não com um reembolso real da Eduzz.
 - [ ] Decidir o plano do Resend (e, depois, do Supabase) conforme o volume de vendas.
 
